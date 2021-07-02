@@ -2,7 +2,7 @@
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/georgehieron/Sites/vue-guitars/pages/index.vue",
+    "component": "/Users/georgehieron/Sites/guitarchive/pages/index.vue",
     "chunkName": "pages/index"
   }
 ]
