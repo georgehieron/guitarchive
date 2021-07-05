@@ -36,7 +36,7 @@
             <li v-for="(item, index) in filteredItems" v-bind:key="index">
                 {{ item.brand }} {{ item.name }}
                 <ul>
-                    <li>{{ item.bridge }}</li>
+                    <li>{{ item.bridge.name }}</li>
                 </ul>
             </li>
         </ul>
@@ -44,48 +44,18 @@
 </template>
 
 <script>
+import brands from './../static/brands.js';
+import bridges from './../static/bridges.js';
+import myGuitars from './../static/guitars.js';
+
 export default {
     data: function() {
         return {
-            brands: [
-                { name: "Ibanez" },
-                { name: "Jackson" },
-                { name: "Solar" },
-            ],
+            brands: brands,
 
-            bridges: [
-                { name: "Tremolo" },
-                { name: "Fixed" },
-                { name: "Evertune" },
-            ],
+            bridges: bridges,
 
-            guitars: [
-                {
-                    name: "PGM",
-                    brand: "Ibanez",
-                    bridge: "Fixed",
-                },
-                {
-                    name: "JEM",
-                    brand: "Ibanez",
-                    bridge: "Tremolo",
-                },
-                {
-                    name: "RG",
-                    brand: "Ibanez",
-                    bridge: "Tremolo",
-                },
-                {
-                    name: "Dinky",
-                    brand: "Jackson",
-                    bridge: "Tremolo",
-                },
-                {
-                    name: "S1.6",
-                    brand: "Solar",
-                    bridge: "Evertune",
-                },
-            ],
+            guitars: myGuitars,
 
             selectedBrand: "",
 
@@ -117,7 +87,7 @@ export default {
                         bridgeFilter.length > 0 &&
                         bridgeFilter != "All"
                     ) {
-                        filtered = g.bridge == bridgeFilter;
+                        filtered = g.bridge.type == bridgeFilter;
                     }
                 }
                 return filtered;
