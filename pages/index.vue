@@ -35,7 +35,7 @@
     <ul>
       <li v-for="(item, index) in filteredItems" v-bind:key="index">
         <NuxtLink
-          :to="`${item.brand.toLowerCase()}/${item.name.toLowerCase()}`"
+          :to="`${item.brand.toLowerCase()}/${item.name.replace(/ /g, '-').toLowerCase()}`"
         >
           <span>{{ item.brand }} {{ item.name }}</span>
           <ul>
