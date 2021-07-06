@@ -1,9 +1,19 @@
 <template>
   <main>
     <form>
+      <div class="search-wrapper">
+        <label>Search model name:</label>
+        <input type="text" v-model="search" placeholder="Search model..." />
+      </div>
+
       <label
         >Brand
-        <select name="brand" id="brand" v-model="selectedBrand">
+        <select
+          name="brand"
+          id="brand"
+          v-model="selectedBrand"
+          :disabled="disabled == 1"
+        >
           <option value="All">All</option>
           <option
             v-for="(brand, index) in brands"
@@ -18,7 +28,12 @@
 
       <label
         >Bridge
-        <select name="bridge" id="bridge" v-model="selectedBridge">
+        <select
+          name="bridge"
+          id="bridge"
+          v-model="selectedBridge"
+          :disabled="disabled == 1"
+        >
           <option value="All">All</option>
           <option
             v-for="(bridge, index) in bridges"
@@ -35,7 +50,9 @@
     <ul>
       <li v-for="(item, index) in filteredItems" v-bind:key="index">
         <NuxtLink
-          :to="`${item.brand.toLowerCase()}/${item.name.replace(/ /g, '-').toLowerCase()}`"
+          :to="`${item.brand.toLowerCase()}/${item.name
+            .replace(/ /g, '-')
+            .toLowerCase()}`"
         >
           <span>{{ item.brand }} {{ item.name }}</span>
           <ul>
@@ -64,6 +81,10 @@ export default {
       selectedBrand: "",
 
       selectedBridge: "",
+
+      search: "",
+
+      disabled: 0,
     };
   },
 
@@ -75,15 +96,22 @@ export default {
   computed: {
     filteredItems: function () {
       let brandFilter = this.selectedBrand,
-        bridgeFilter = this.selectedBridge;
+        bridgeFilter = this.selectedBridge,
+        search = this.search;
       return this.guitars.filter(function (g) {
         let filtered = true;
-        if (brandFilter && brandFilter != "All") {
-          filtered = g.brand == brandFilter;
-        }
-        if (filtered) {
-          if (bridgeFilter && bridgeFilter != "All") {
-            filtered = g.bridge.type == bridgeFilter;
+        if (search != "") {
+          this.disabled = 1;
+          filtered = g.name.toLowerCase().includes(search.toLowerCase());
+        } else {
+          this.disabled = 0;
+          if (brandFilter && brandFilter != "All") {
+            filtered = g.brand == brandFilter;
+          }
+          if (filtered) {
+            if (bridgeFilter && bridgeFilter != "All") {
+              filtered = g.bridge.type == bridgeFilter;
+            }
           }
         }
         return filtered;
