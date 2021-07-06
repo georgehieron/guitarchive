@@ -32,21 +32,23 @@
             <br /><br />
         </form>
 
-        <ul>
-            <li v-for="(item, index) in filteredItems" v-bind:key="index">
-                {{ item.brand }} {{ item.name }}
-                <ul>
-                    <li>{{ item.bridge.name }}</li>
-                </ul>
-            </li>
+        <ul v-for="(item, index) in filteredItems" v-bind:key="index">
+            <NuxtLink :to="`${item.brand.toLowerCase()}/${item.name.toLowerCase()}`">
+                <li>
+                    {{ item.brand }} {{ item.name }}
+                    <ul>
+                        <li>{{ item.bridge.name }}</li>
+                    </ul>
+                </li>
+            </NuxtLink>
         </ul>
     </main>
 </template>
 
 <script>
-import brands from './../static/brands.js';
-import bridges from './../static/bridges.js';
-import myGuitars from './../static/guitars.js';
+import brands from "./../static/brands.js";
+import bridges from "./../static/bridges.js";
+import myGuitars from "./../static/guitars.js";
 
 export default {
     data: function() {
