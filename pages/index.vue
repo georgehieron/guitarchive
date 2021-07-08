@@ -21,10 +21,10 @@
           <option value="All">All</option>
           <option
             v-for="(brand, index) in brands"
-            v-bind:value="brand.model"
+            v-bind:value="brand.name"
             v-bind:key="index"
           >
-            {{ brand.model }}
+            {{ brand.name }}
           </option>
         </select>
       </label>
@@ -41,10 +41,10 @@
           <option value="All">All</option>
           <option
             v-for="(bridge, index) in bridges"
-            v-bind:value="bridge.model"
+            v-bind:value="bridge.type"
             v-bind:key="index"
           >
-            {{ bridge.model }}
+            {{ bridge.type }}
           </option>
         </select>
       </label>
