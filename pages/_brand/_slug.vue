@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ this.brand }} {{ this.name }}</h1>
+    <h1>{{ this.brand }} {{ this.model }}</h1>
     <ul>
       <li>{{ this.bridge.name }} ({{ this.bridge.type }})</li>
     </ul>
@@ -17,14 +17,12 @@ export default {
     const guitars = myGuitars;
 
     const filteredGuitar = guitars.find(
-      (el) =>
-        el.brand.toLowerCase() === params.brand &&
-        el.name.toLowerCase() === params.slug
+      (el) => el.brandSlug === params.brand && el.modelSlug === params.slug
     );
     if (filteredGuitar) {
       return {
         brand: filteredGuitar.brand,
-        name: filteredGuitar.name,
+        model: filteredGuitar.model,
         bridge: filteredGuitar.bridge,
         slug: slug,
       };

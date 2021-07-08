@@ -2,8 +2,12 @@
   <main>
     <form>
       <div class="search-wrapper">
-        <label>Search model name:</label>
-        <input type="text" v-model="search" placeholder="Search model..." />
+        <label>Search brand/model:</label>
+        <input
+          type="text"
+          v-model="search"
+          placeholder="Search brand/model..."
+        />
       </div>
 
       <label
@@ -17,10 +21,10 @@
           <option value="All">All</option>
           <option
             v-for="(brand, index) in brands"
-            v-bind:value="brand.name"
+            v-bind:value="brand.model"
             v-bind:key="index"
           >
-            {{ brand.name }}
+            {{ brand.model }}
           </option>
         </select>
       </label>
@@ -37,10 +41,10 @@
           <option value="All">All</option>
           <option
             v-for="(bridge, index) in bridges"
-            v-bind:value="bridge.name"
+            v-bind:value="bridge.model"
             v-bind:key="index"
           >
-            {{ bridge.name }}
+            {{ bridge.model }}
           </option>
         </select>
       </label>
@@ -49,12 +53,8 @@
 
     <ul>
       <li v-for="(item, index) in filteredItems" v-bind:key="index">
-        <NuxtLink
-          :to="`${item.brand.toLowerCase()}/${item.name
-            .replace(/ /g, '-')
-            .toLowerCase()}`"
-        >
-          <span>{{ item.brand }} {{ item.name }}</span>
+        <NuxtLink :to="`${item.brandSlug}/${item.modelSlug}`">
+          <span>{{ item.name }}</span>
           <ul>
             <li>{{ item.bridge.name }}</li>
           </ul>

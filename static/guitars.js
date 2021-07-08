@@ -1,7 +1,7 @@
 const guitars = [
     {
         brand: "Ibanez",
-        name: "PGM301",
+        model: "PGM301",
         bridge: {
             type: "Fixed",
             name: "Gotoh GTC101"
@@ -9,31 +9,31 @@ const guitars = [
     },
     {
         brand: "Ibanez",
-        name: "JEM777DY",
+        model: "JEM777DY",
         bridge: {
             type: "Floating Tremolo",
-            name: "Edge"
+            name: "Ibanez Edge"
         }
     },
     {
         brand: "Ibanez",
-        name: "RG1527M",
+        model: "RG1527M",
         bridge: {
             type: "Floating Tremolo",
-            name: "Edge Pro 7"
+            name: "Ibanez Edge Pro 7"
         }
     },
     {
         brand: "Ibanez",
-        name: "RG565EG Genesis",
+        model: "RG565EG Genesis",
         bridge: {
             type: "Floating Tremolo",
-            name: "Edge"
+            name: "Ibanez Edge"
         }
     },
     {
         brand: "Jackson",
-        name: "Dinky Fusion EX Professional",
+        model: "Dinky Fusion EX Professional",
         bridge: {
             type: "Floating Tremolo",
             name: "Gotoh"
@@ -41,12 +41,18 @@ const guitars = [
     },
     {
         brand: "Solar",
-        name: "S1.6 LB",
+        model: "S1.6LB",
         bridge: {
             type: "Evertune",
             name: "Evertune F6"
         }
     },
 ]
+
+guitars.forEach(g => {
+    g.name = g.brand + ' ' + g.model;
+    g.brandSlug = g.brand.replace(/ /g, '-').toLowerCase();
+    g.modelSlug = g.model.replace(/ /g, '-').toLowerCase();
+});
 
 export default guitars;
