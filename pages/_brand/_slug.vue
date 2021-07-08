@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1>{{ this.brand }} {{ this.model }}</h1>
+    <h1>{{ this.name }}</h1>
     <ul>
       <li>{{ this.bridge.name }} ({{ this.bridge.type }})</li>
+      <li>{{ this.ownership }}</li>
     </ul>
   </div>
 </template>
@@ -21,9 +22,11 @@ export default {
     );
     if (filteredGuitar) {
       return {
+        name: filteredGuitar.name,
         brand: filteredGuitar.brand,
         model: filteredGuitar.model,
         bridge: filteredGuitar.bridge,
+        ownership: filteredGuitar.ownership,
         slug: slug,
       };
     } else {

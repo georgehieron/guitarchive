@@ -5,7 +5,8 @@ const guitars = [
         bridge: {
             type: "Fixed",
             name: "Gotoh GTC101"
-        }
+        },
+        ownership: "Own"
     },
     {
         brand: "Ibanez",
@@ -13,7 +14,8 @@ const guitars = [
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge"
-        }
+        },
+        ownership: "Own"
     },
     {
         brand: "Ibanez",
@@ -21,7 +23,8 @@ const guitars = [
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Pro 7"
-        }
+        },
+        ownership: "Own"
     },
     {
         brand: "Ibanez",
@@ -29,7 +32,8 @@ const guitars = [
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge"
-        }
+        },
+        ownership: "Own"
     },
     {
         brand: "Jackson",
@@ -37,7 +41,8 @@ const guitars = [
         bridge: {
             type: "Floating Tremolo",
             name: "Gotoh"
-        }
+        },
+        ownership: "Own"
     },
     {
         brand: "Solar",
@@ -45,7 +50,17 @@ const guitars = [
         bridge: {
             type: "Evertune",
             name: "Evertune F6"
-        }
+        },
+        ownership: "Own"
+    },
+    {
+        brand: "ESP",
+        model: "LTD Alexi-600 SE",
+        bridge: {
+            type: "Floating Tremolo",
+            name: "Floyd Rose Original"
+        },
+        ownership: "Sold"
     },
 ]
 
