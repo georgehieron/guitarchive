@@ -1,7 +1,8 @@
 const bridges = [
-    { type: "Floating Tremolo" },
-    { type: "Fixed" },
     { type: "Evertune" },
+    { type: "Fixed" },
+    { type: "Floating Tremolo" },
+    { type: "Tune-O-Matic" },
 ]
 
 export default bridges;

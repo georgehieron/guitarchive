@@ -51,6 +51,26 @@
       <br /><br />
 
       <label
+        >Construction
+        <select
+          name="construction"
+          id="construction"
+          v-model="selectedConstruction"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(construction, index) in constructions"
+            v-bind:value="construction.type"
+            v-bind:key="index"
+          >
+            {{ construction.type }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
         >Ownership
         <select
           name="ownership"
@@ -77,6 +97,7 @@
           <span>{{ item.name }}</span>
           <ul>
             <li>{{ item.bridge.name }}</li>
+            <li>{{ item.construction.type }}</li>
             <li>{{ item.ownership }}</li>
           </ul>
         </NuxtLink>
@@ -89,6 +110,7 @@
 import myGuitars from "../assets/js/guitars.js";
 import brands from "../assets/js/brands.js";
 import bridges from "../assets/js/bridges.js";
+import constructions from "../assets/js/constructions.js";
 import ownerships from "../assets/js/ownerships.js";
 
 export default {
@@ -102,6 +124,9 @@ export default {
       bridges: bridges,
       selectedBridge: "",
 
+      constructions: constructions,
+      selectedConstruction: "",
+
       ownerships: ownerships,
       selectedOwnership: "",
 
@@ -114,6 +139,7 @@ export default {
   mounted: function () {
     this.selectedBrand = "All";
     this.selectedBridge = "All";
+    this.selectedConstruction = "All";
     this.selectedOwnership = "All";
   },
 
@@ -121,6 +147,7 @@ export default {
     filteredItems: function () {
       let brandFilter = this.selectedBrand,
         bridgeFilter = this.selectedBridge,
+        constructionFilter = this.selectedConstruction,
         ownershipFilter = this.selectedOwnership,
         search = this.search;
       return this.guitars.filter(function (g) {
@@ -139,8 +166,12 @@ export default {
             }
           }
           if (filtered) {
+            if (constructionFilter && constructionFilter != "All") {
+              filtered = g.construction.type == constructionFilter;
+            }
+          }
+          if (filtered) {
             if (ownershipFilter && ownershipFilter != "All") {
-              console.log("dfsd");
               filtered = g.ownership == ownershipFilter;
             }
           }

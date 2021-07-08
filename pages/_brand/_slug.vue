@@ -3,6 +3,7 @@
     <h1>{{ this.name }}</h1>
     <ul>
       <li>{{ this.bridge.name }} ({{ this.bridge.type }})</li>
+      <li>{{ this.construction.type }}<span v-if="this.construction.detail"> ({{ this.construction.detail }})</span></li>
       <li>{{ this.ownership }}</li>
     </ul>
   </div>
@@ -26,6 +27,7 @@ export default {
         brand: filteredGuitar.brand,
         model: filteredGuitar.model,
         bridge: filteredGuitar.bridge,
+        construction: filteredGuitar.construction,
         ownership: filteredGuitar.ownership,
         slug: slug,
       };
