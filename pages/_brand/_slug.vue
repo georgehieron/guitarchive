@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import myGuitars from "../../static/guitars.js";
+import myGuitars from "../../assets/js/guitars.js";
 
 export default {
   async asyncData({ params, redirect }) {

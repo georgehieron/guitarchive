@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import brands from "./../static/brands.js";
-import bridges from "./../static/bridges.js";
-import myGuitars from "./../static/guitars.js";
+import brands from "../assets/js/brands.js";
+import bridges from "../assets/js/bridges.js";
+import myGuitars from "../assets/js/guitars.js";
 
 export default {
   data: function () {
