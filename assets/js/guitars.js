@@ -40,6 +40,19 @@ const guitars = [
     },
     {
         brand: "Ibanez",
+        model: "RG8FM",
+        bridge: {
+            type: "Fixed",
+            name: "Generic"
+        },
+        construction: {
+            type: "Bolt-on",
+            detail: "AANJ"
+        },
+        ownership: "Sold"
+    },
+    {
+        brand: "Ibanez",
         model: "PGM301",
         bridge: {
             type: "Fixed",
@@ -76,6 +89,45 @@ const guitars = [
             detail: "AANJ"
         },
         ownership: "Own"
+    },
+    {
+        brand: "Ibanez",
+        model: "S470FOF",
+        bridge: {
+            type: "Floating Tremolo",
+            name: "Ibanez ZR tremolo w/ ZPS2 stabilizer"
+        },
+        construction: {
+            type: "Bolt-on",
+            detail: "AANJ"
+        },
+        ownership: "Sold"
+    },
+    {
+        brand: "Ibanez",
+        model: "RG1527RB",
+        bridge: {
+            type: "Floating Tremolo",
+            name: "Ibanez Edge Pro 7"
+        },
+        construction: {
+            type: "Bolt-on",
+            detail: "AANJ"
+        },
+        ownership: "Sold"
+    },
+    {
+        brand: "Schecter",
+        model: "Diamond Series 7",
+        bridge: {
+            type: "Tune-O-Matic",
+            name: "Generic"
+        },
+        construction: {
+            type: "Bolt-on",
+            detail: ""
+        },
+        ownership: "Sold"
     },
     {
         brand: "ESP",
@@ -115,6 +167,19 @@ const guitars = [
             detail: ""
         },
         ownership: "Own"
+    },
+    {
+        brand: "Crafter",
+        model: "Cruiser RG600",
+        bridge: {
+            type: "Tune-O-Matic",
+            name: "Generic"
+        },
+        construction: {
+            type: "Bolt-on",
+            detail: ""
+        },
+        ownership: "Sold"
     },
 ]
 
