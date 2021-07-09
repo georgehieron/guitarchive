@@ -91,6 +91,26 @@
       <br /><br />
 
       <label
+        >Fretboard
+        <select
+          name="fretboard"
+          id="fretboard"
+          v-model="selectedFretboard"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(fretboard, index) in fretboards"
+            v-bind:value="fretboard"
+            v-bind:key="index"
+          >
+            {{ fretboard }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
         >Ownership
         <select
           name="ownership"
@@ -119,6 +139,7 @@
             <li>{{ item.bridge.name }}</li>
             <li>{{ item.colour.name }}</li>
             <li>{{ item.construction.type }}</li>
+            <li>{{ item.fretboard }}</li>
             <li>{{ item.ownership }}</li>
           </ul>
         </NuxtLink>
@@ -134,6 +155,7 @@ import {
   bridges,
   colours,
   constructions,
+  fretboards,
   ownerships,
 } from "../assets/js/guitars.js";
 
@@ -154,6 +176,9 @@ export default {
       constructions: constructions,
       selectedConstruction: "",
 
+      fretboards: fretboards,
+      selectedFretboard: "",
+
       ownerships: ownerships,
       selectedOwnership: "",
 
@@ -168,6 +193,7 @@ export default {
     this.selectedBridge = "All";
     this.selectedColour = "All";
     this.selectedConstruction = "All";
+    this.selectedFretboard = "All";
     this.selectedOwnership = "All";
   },
 
@@ -177,6 +203,7 @@ export default {
         bridgeFilter = this.selectedBridge,
         colourFilter = this.selectedColour,
         constructionFilter = this.selectedConstruction,
+        fretboardFilter = this.selectedFretboard,
         ownershipFilter = this.selectedOwnership,
         search = this.search;
       return this.guitars.filter(function (g) {
@@ -202,6 +229,11 @@ export default {
           if (filtered) {
             if (constructionFilter && constructionFilter != "All") {
               filtered = g.construction.type == constructionFilter;
+            }
+          }
+          if (filtered) {
+            if (fretboardFilter && fretboardFilter != "All") {
+              filtered = g.fretboard == fretboardFilter;
             }
           }
           if (filtered) {

@@ -16,6 +16,7 @@ const guitars = [
             detail: "Tilt Joint",
         },
         ownership: "Own",
+        fretboard: "Maple",
     },
     {
         brand: "Ibanez",
@@ -34,6 +35,7 @@ const guitars = [
             detail: "J.Custom AANJ",
         },
         ownership: "Own",
+        fretboard: "Rosewood",
     },
     {
         brand: "Solar",
@@ -52,6 +54,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Own",
+        fretboard: "Ebony",
     },
     {
         brand: "Ibanez",
@@ -70,6 +73,7 @@ const guitars = [
             detail: "AANJ",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
     {
         brand: "Ibanez",
@@ -88,6 +92,7 @@ const guitars = [
             detail: "AANJ",
         },
         ownership: "Own",
+        fretboard: "Maple",
     },
     {
         brand: "Ibanez",
@@ -106,6 +111,7 @@ const guitars = [
             detail: "Cutaway Heel",
         },
         ownership: "Own",
+        fretboard: "Maple",
     },
     {
         brand: "Ibanez",
@@ -124,6 +130,7 @@ const guitars = [
             detail: "AANJ",
         },
         ownership: "Own",
+        fretboard: "Maple",
     },
     {
         brand: "Ibanez",
@@ -142,6 +149,7 @@ const guitars = [
             detail: "AANJ",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
     {
         brand: "Ibanez",
@@ -160,6 +168,7 @@ const guitars = [
             detail: "AANJ",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
     {
         brand: "Schecter",
@@ -178,6 +187,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
     {
         brand: "ESP",
@@ -196,6 +206,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Sold",
+        fretboard: "Ebony",
     },
     {
         brand: "Vintage",
@@ -214,6 +225,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
     {
         brand: "Jackson",
@@ -232,6 +244,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Own",
+        fretboard: "Rosewood",
     },
     {
         brand: "Crafter",
@@ -250,6 +263,7 @@ const guitars = [
             detail: "",
         },
         ownership: "Sold",
+        fretboard: "Rosewood",
     },
 ];
 
@@ -257,6 +271,7 @@ const brands = [];
 const bridges = [];
 const colours = [];
 const constructions = [];
+const fretboards = [];
 const ownerships = [];
 
 guitars.forEach((g) => {
@@ -275,6 +290,9 @@ guitars.forEach((g) => {
     if (constructions.indexOf(g.construction.type) === -1) {
         constructions.push(g.construction.type);
     }
+    if (fretboards.indexOf(g.fretboard) === -1) {
+        fretboards.push(g.fretboard);
+    }
     if (ownerships.indexOf(g.ownership) === -1) {
         ownerships.push(g.ownership);
     }
@@ -284,6 +302,7 @@ brands.sort();
 bridges.sort();
 colours.sort();
 constructions.sort();
+fretboards.sort();
 ownerships.sort();
 
-export { guitars, brands, bridges, colours, constructions, ownerships };
+export { guitars, brands, bridges, colours, constructions, fretboards, ownerships };
