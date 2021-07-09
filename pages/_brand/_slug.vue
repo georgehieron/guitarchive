@@ -9,6 +9,7 @@
           ({{ this.construction.detail }})</span
         >
       </li>
+      <li>{{ this.colour.name }}</li>
       <li>{{ this.ownership }}</li>
     </ul>
   </div>
@@ -30,6 +31,7 @@ export default {
         brand: filteredGuitar.brand,
         model: filteredGuitar.model,
         bridge: filteredGuitar.bridge,
+        colour: filteredGuitar.colour,
         construction: filteredGuitar.construction,
         ownership: filteredGuitar.ownership,
         slug: slug,

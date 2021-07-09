@@ -51,6 +51,26 @@
       <br /><br />
 
       <label
+        >Colour
+        <select
+          name="colour"
+          id="colour"
+          v-model="selectedColour"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(colour, index) in colours"
+            v-bind:value="colour"
+            v-bind:key="index"
+          >
+            {{ colour }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
         >Construction
         <select
           name="construction"
@@ -97,6 +117,7 @@
           <span>{{ item.name }}</span>
           <ul>
             <li>{{ item.bridge.name }}</li>
+            <li>{{ item.colour.name }}</li>
             <li>{{ item.construction.type }}</li>
             <li>{{ item.ownership }}</li>
           </ul>
@@ -111,6 +132,7 @@ import {
   guitars,
   brands,
   bridges,
+  colours,
   constructions,
   ownerships,
 } from "../assets/js/guitars.js";
@@ -125,6 +147,9 @@ export default {
 
       bridges: bridges,
       selectedBridge: "",
+
+      colours: colours,
+      selectedColour: "",
 
       constructions: constructions,
       selectedConstruction: "",
@@ -141,6 +166,7 @@ export default {
   mounted: function () {
     this.selectedBrand = "All";
     this.selectedBridge = "All";
+    this.selectedColour = "All";
     this.selectedConstruction = "All";
     this.selectedOwnership = "All";
   },
@@ -149,6 +175,7 @@ export default {
     filteredItems: function () {
       let brandFilter = this.selectedBrand,
         bridgeFilter = this.selectedBridge,
+        colourFilter = this.selectedColour,
         constructionFilter = this.selectedConstruction,
         ownershipFilter = this.selectedOwnership,
         search = this.search;
@@ -165,6 +192,11 @@ export default {
           if (filtered) {
             if (bridgeFilter && bridgeFilter != "All") {
               filtered = g.bridge.type == bridgeFilter;
+            }
+          }
+          if (filtered) {
+            if (colourFilter && colourFilter != "All") {
+              filtered = g.colour.primary == colourFilter;
             }
           }
           if (filtered) {
