@@ -3,23 +3,26 @@
     <h1>{{ this.name }}</h1>
     <ul>
       <li>{{ this.bridge.name }} ({{ this.bridge.type }})</li>
-      <li>{{ this.construction.type }}<span v-if="this.construction.detail"> ({{ this.construction.detail }})</span></li>
+      <li>
+        {{ this.construction.type
+        }}<span v-if="this.construction.detail">
+          ({{ this.construction.detail }})</span
+        >
+      </li>
       <li>{{ this.ownership }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import myGuitars from "../../assets/js/guitars.js";
+import { guitars } from "../../assets/js/guitars.js";
 
 export default {
   async asyncData({ params, redirect }) {
     const slug = params.slug;
 
-    const guitars = myGuitars;
-
     const filteredGuitar = guitars.find(
-      (el) => el.brandSlug === params.brand && el.modelSlug === params.slug
+      (g) => g.brandSlug === params.brand && g.modelSlug === params.slug
     );
     if (filteredGuitar) {
       return {

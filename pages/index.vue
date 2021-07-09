@@ -21,10 +21,10 @@
           <option value="All">All</option>
           <option
             v-for="(brand, index) in brands"
-            v-bind:value="brand.name"
+            v-bind:value="brand"
             v-bind:key="index"
           >
-            {{ brand.name }}
+            {{ brand }}
           </option>
         </select>
       </label>
@@ -41,10 +41,10 @@
           <option value="All">All</option>
           <option
             v-for="(bridge, index) in bridges"
-            v-bind:value="bridge.type"
+            v-bind:value="bridge"
             v-bind:key="index"
           >
-            {{ bridge.type }}
+            {{ bridge }}
           </option>
         </select>
       </label>
@@ -61,10 +61,10 @@
           <option value="All">All</option>
           <option
             v-for="(construction, index) in constructions"
-            v-bind:value="construction.type"
+            v-bind:value="construction"
             v-bind:key="index"
           >
-            {{ construction.type }}
+            {{ construction }}
           </option>
         </select>
       </label>
@@ -81,10 +81,10 @@
           <option value="All">All</option>
           <option
             v-for="(ownership, index) in ownerships"
-            v-bind:value="ownership.name"
+            v-bind:value="ownership"
             v-bind:key="index"
           >
-            {{ ownership.name }}
+            {{ ownership }}
           </option>
         </select>
       </label>
@@ -107,16 +107,18 @@
 </template>
 
 <script>
-import myGuitars from "../assets/js/guitars.js";
-import brands from "../assets/js/brands.js";
-import bridges from "../assets/js/bridges.js";
-import constructions from "../assets/js/constructions.js";
-import ownerships from "../assets/js/ownerships.js";
+import {
+  guitars,
+  brands,
+  bridges,
+  constructions,
+  ownerships,
+} from "../assets/js/guitars.js";
 
 export default {
   data: function () {
     return {
-      guitars: myGuitars,
+      guitars: guitars,
 
       brands: brands,
       selectedBrand: "",
