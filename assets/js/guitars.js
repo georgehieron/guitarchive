@@ -16,6 +16,7 @@ const guitars = [
             detail: "Tilt Joint",
         },
         fretboard: "Maple",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -23,7 +24,9 @@ const guitars = [
             bridge: "Ibanez V8",
             middle: "",
             neck: "Ibanez Infinity R",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Ibanez",
@@ -42,6 +45,7 @@ const guitars = [
             detail: "J.Custom AANJ",
         },
         fretboard: "Rosewood",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -49,7 +53,9 @@ const guitars = [
             bridge: "EMG 81",
             middle: "",
             neck: "EMG 85",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Solar",
@@ -68,6 +74,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Ebony",
+        frets: "24",
         origin: "Indonesia",
         ownership: "Own",
         pickups: {
@@ -75,7 +82,9 @@ const guitars = [
             bridge: "Seymour Duncan Solar Bridge",
             middle: "",
             neck: "Seymour Duncan Solar Neck",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Ibanez",
@@ -94,6 +103,7 @@ const guitars = [
             detail: "AANJ",
         },
         fretboard: "Rosewood",
+        frets: "24",
         origin: "Indonesia",
         ownership: "Sold",
         pickups: {
@@ -101,7 +111,9 @@ const guitars = [
             bridge: "Ibanez IBZ-8",
             middle: "",
             neck: "EMG 808X",
-        }
+        },
+        scale: "27\"",
+        strings: "8",
     },
     {
         brand: "Ibanez",
@@ -120,6 +132,7 @@ const guitars = [
             detail: "AANJ",
         },
         fretboard: "Maple",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -127,7 +140,9 @@ const guitars = [
             bridge: "DiMarzio PAF Pro",
             middle: "DiMarzio JEM Single",
             neck: "DiMarzio PAF Pro",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Ibanez",
@@ -146,6 +161,7 @@ const guitars = [
             detail: "Cutaway Heel",
         },
         fretboard: "Maple",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -153,7 +169,9 @@ const guitars = [
             bridge: "DiMarzio PAF Pro",
             middle: "DiMarzio JEM Single",
             neck: "DiMarzio PAF Pro",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Ibanez",
@@ -172,6 +190,7 @@ const guitars = [
             detail: "AANJ",
         },
         fretboard: "Maple",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -179,7 +198,9 @@ const guitars = [
             bridge: "DiMarzio Crunch Lab",
             middle: "",
             neck: "DiMarzio Liquifire",
-        }
+        },
+        scale: "25.5\"",
+        strings: "7",
     },
     {
         brand: "Ibanez",
@@ -198,6 +219,7 @@ const guitars = [
             detail: "AANJ",
         },
         fretboard: "Rosewood",
+        frets: "22",
         origin: "South Korea",
         ownership: "Sold",
         pickups: {
@@ -205,7 +227,9 @@ const guitars = [
             bridge: "Ibanez PSND2",
             middle: "Ibanez PSNDS",
             neck: "Ibanez PSND1",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Ibanez",
@@ -224,6 +248,7 @@ const guitars = [
             detail: "AANJ",
         },
         fretboard: "Rosewood",
+        frets: "24",
         origin: "Japan",
         ownership: "Sold",
         pickups: {
@@ -231,7 +256,9 @@ const guitars = [
             bridge: "Ibanez V87",
             middle: "",
             neck: "Ibanez V77",
-        }
+        },
+        scale: "25.5\"",
+        strings: "7",
     },
     {
         brand: "Schecter",
@@ -250,6 +277,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Rosewood",
+        frets: "24",
         origin: "",
         ownership: "Sold",
         pickups: {
@@ -257,7 +285,9 @@ const guitars = [
             bridge: "",
             middle: "",
             neck: "",
-        }
+        },
+        scale: "25.5\"",
+        strings: "7",
     },
     {
         brand: "ESP",
@@ -276,6 +306,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Ebony",
+        frets: "24",
         origin: "South Korea",
         ownership: "Sold",
         pickups: {
@@ -283,7 +314,9 @@ const guitars = [
             bridge: "EMG HZ-H4",
             middle: "",
             neck: "",
-        }
+        },
+        scale: "25.5\"",
+        strings: "6",
     },
     {
         brand: "Vintage",
@@ -302,6 +335,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Rosewood",
+        frets: "22",
         origin: "",
         ownership: "Sold",
         pickups: {
@@ -309,7 +343,9 @@ const guitars = [
             bridge: "Wilkinson MWVC",
             middle: "",
             neck: "Wilkinson MWVC",
-        }
+        },
+        scale: "24.75\"",
+        strings: "6",
     },
     {
         brand: "Jackson",
@@ -328,6 +364,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Rosewood",
+        frets: "24",
         origin: "Japan",
         ownership: "Own",
         pickups: {
@@ -335,7 +372,9 @@ const guitars = [
             bridge: "DiMarzio Super Distortion",
             middle: "DiMarzio FS-40",
             neck: "DiMarzio Air Norton S",
-        }
+        },
+        scale: "24.75\"",
+        strings: "6",
     },
     {
         brand: "Crafter",
@@ -354,6 +393,7 @@ const guitars = [
             detail: "",
         },
         fretboard: "Rosewood",
+        frets: "22",
         origin: "",
         ownership: "Sold",
         pickups: {
@@ -361,7 +401,9 @@ const guitars = [
             bridge: "",
             middle: "",
             neck: "",
-        }
+        },
+        scale: "",
+        strings: "6",
     },
 ];
 
@@ -370,9 +412,12 @@ const bridges = [];
 const colours = [];
 const constructions = [];
 const fretboards = [];
+const frets = [];
 const origins = [];
 const ownerships = [];
 const pickups = [];
+const scales = [];
+const strings = [];
 
 guitars.forEach((g) => {
     g.name = g.brand + " " + g.model;
@@ -393,6 +438,9 @@ guitars.forEach((g) => {
     if (fretboards.indexOf(g.fretboard) === -1) {
         fretboards.push(g.fretboard);
     }
+    if (frets.indexOf(g.frets) === -1) {
+        frets.push(g.frets);
+    }
     if (g.origin != "" && origins.indexOf(g.origin) === -1) {
         origins.push(g.origin);
     }
@@ -402,6 +450,12 @@ guitars.forEach((g) => {
     if (pickups.indexOf(g.pickups.conf) === -1) {
         pickups.push(g.pickups.conf);
     }
+    if (g.scale != "" && scales.indexOf(g.scale) === -1) {
+        scales.push(g.scale);
+    }
+    if (strings.indexOf(g.strings) === -1) {
+        strings.push(g.strings);
+    }
 });
 
 brands.sort();
@@ -409,9 +463,12 @@ bridges.sort();
 colours.sort();
 constructions.sort();
 fretboards.sort();
+frets.sort();
 origins.sort();
 ownerships.sort();
 pickups.sort();
+scales.sort();
+strings.sort();
 
 export {
     guitars,
@@ -420,7 +477,10 @@ export {
     colours,
     constructions,
     fretboards,
+    frets,
     origins,
     ownerships,
     pickups,
+    scales,
+    strings,
 };

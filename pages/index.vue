@@ -111,6 +111,26 @@
       <br /><br />
 
       <label
+        >Frets
+        <select
+          name="frets"
+          id="frets"
+          v-model="selectedFrets"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(frets, index) in frets"
+            v-bind:value="frets"
+            v-bind:key="index"
+          >
+            {{ frets }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
         >Origin
         <select
           name="origin"
@@ -151,7 +171,7 @@
       <br /><br />
 
       <label
-        >Pickups
+        >Pickup Configuration
         <select
           name="pickups"
           id="pickups"
@@ -169,6 +189,46 @@
         </select>
       </label>
       <br /><br />
+
+      <label
+        >Scale
+        <select
+          name="scale"
+          id="scale"
+          v-model="selectedScale"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(scale, index) in scales"
+            v-bind:value="scale"
+            v-bind:key="index"
+          >
+            {{ scale }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
+        >Strings
+        <select
+          name="strings"
+          id="strings"
+          v-model="selectedStrings"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(strings, index) in strings"
+            v-bind:value="strings"
+            v-bind:key="index"
+          >
+            {{ strings }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
     </form>
 
     <ul>
@@ -180,9 +240,12 @@
             <li>{{ item.colour.name }}</li>
             <li>{{ item.construction.type }}</li>
             <li>{{ item.fretboard }}</li>
+            <li>{{ item.frets }}</li>
             <li v-if="item.origin">{{ item.origin }}</li>
             <li>{{ item.ownership }}</li>
             <li>{{ item.pickups.conf }}</li>
+            <li>{{ item.scale }}</li>
+            <li>{{ item.strings }}</li>
           </ul>
         </NuxtLink>
       </li>
@@ -198,9 +261,12 @@ import {
   colours,
   constructions,
   fretboards,
+  frets,
   origins,
   ownerships,
   pickups,
+  scales,
+  strings,
 } from "../assets/js/guitars.js";
 
 export default {
@@ -223,6 +289,12 @@ export default {
       fretboards: fretboards,
       selectedFretboard: "",
 
+      frets: frets,
+      selectedFrets: "",
+
+      fretboards: fretboards,
+      selectedFretboard: "",
+
       origins: origins,
       selectedOrigin: "",
 
@@ -231,6 +303,12 @@ export default {
 
       pickups: pickups,
       selectedPickups: "",
+
+      scales: scales,
+      selectedScale: "",
+
+      strings: strings,
+      selectedStrings: "",
 
       search: "",
 
@@ -244,9 +322,12 @@ export default {
     this.selectedColour = "All";
     this.selectedConstruction = "All";
     this.selectedFretboard = "All";
+    this.selectedFrets = "All";
     this.selectedOrigin = "All";
     this.selectedOwnership = "All";
     this.selectedPickups = "All";
+    this.selectedScale = "All";
+    this.selectedStrings = "All";
   },
 
   computed: {
@@ -256,9 +337,12 @@ export default {
         colourFilter = this.selectedColour,
         constructionFilter = this.selectedConstruction,
         fretboardFilter = this.selectedFretboard,
+        fretsFilter = this.selectedFrets,
         originFilter = this.selectedOrigin,
         ownershipFilter = this.selectedOwnership,
         pickupsFilter = this.selectedPickups,
+        scaleFilter = this.selectedScale,
+        stringsFilter = this.selectedStrings,
         search = this.search;
       return this.guitars.filter(function (g) {
         let filtered = true;
@@ -291,6 +375,11 @@ export default {
             }
           }
           if (filtered) {
+            if (fretsFilter && fretsFilter != "All") {
+              filtered = g.frets == fretsFilter;
+            }
+          }
+          if (filtered) {
             if (originFilter && originFilter != "All") {
               filtered = g.origin == originFilter;
             }
@@ -303,6 +392,16 @@ export default {
           if (filtered) {
             if (pickupsFilter && pickupsFilter != "All") {
               filtered = g.pickups.conf == pickupsFilter;
+            }
+          }
+          if (filtered) {
+            if (scaleFilter && scaleFilter != "All") {
+              filtered = g.scale == scaleFilter;
+            }
+          }
+          if (filtered) {
+            if (stringsFilter && stringsFilter != "All") {
+              filtered = g.strings == stringsFilter;
             }
           }
         }
