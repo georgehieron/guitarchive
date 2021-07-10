@@ -149,6 +149,26 @@
         </select>
       </label>
       <br /><br />
+
+      <label
+        >Pickups
+        <select
+          name="pickups"
+          id="pickups"
+          v-model="selectedPickups"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(pickups, index) in pickups"
+            v-bind:value="pickups"
+            v-bind:key="index"
+          >
+            {{ pickups }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
     </form>
 
     <ul>
@@ -160,8 +180,9 @@
             <li>{{ item.colour.name }}</li>
             <li>{{ item.construction.type }}</li>
             <li>{{ item.fretboard }}</li>
-            <li>{{ item.origin }}</li>
+            <li v-if="item.origin">{{ item.origin }}</li>
             <li>{{ item.ownership }}</li>
+            <li>{{ item.pickups.conf }}</li>
           </ul>
         </NuxtLink>
       </li>
@@ -179,6 +200,7 @@ import {
   fretboards,
   origins,
   ownerships,
+  pickups,
 } from "../assets/js/guitars.js";
 
 export default {
@@ -207,6 +229,9 @@ export default {
       ownerships: ownerships,
       selectedOwnership: "",
 
+      pickups: pickups,
+      selectedPickups: "",
+
       search: "",
 
       disabled: 0,
@@ -221,6 +246,7 @@ export default {
     this.selectedFretboard = "All";
     this.selectedOrigin = "All";
     this.selectedOwnership = "All";
+    this.selectedPickups = "All";
   },
 
   computed: {
@@ -232,6 +258,7 @@ export default {
         fretboardFilter = this.selectedFretboard,
         originFilter = this.selectedOrigin,
         ownershipFilter = this.selectedOwnership,
+        pickupsFilter = this.selectedPickups,
         search = this.search;
       return this.guitars.filter(function (g) {
         let filtered = true;
@@ -271,6 +298,11 @@ export default {
           if (filtered) {
             if (ownershipFilter && ownershipFilter != "All") {
               filtered = g.ownership == ownershipFilter;
+            }
+          }
+          if (filtered) {
+            if (pickupsFilter && pickupsFilter != "All") {
+              filtered = g.pickups.conf == pickupsFilter;
             }
           }
         }

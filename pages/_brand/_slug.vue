@@ -11,8 +11,16 @@
       </li>
       <li>{{ this.colour.name }}</li>
       <li>{{ this.fretboard }}</li>
-      <li>{{ this.origin }}</li>
+      <li v-if="this.origin">{{ this.origin }}</li>
       <li>{{ this.ownership }}</li>
+      <li>
+        {{ this.pickups.conf }}
+        <ul v-if="this.pickups.bridge">
+          <li v-if="this.pickups.bridge">Bridge: {{ this.pickups.bridge }}</li>
+          <li v-if="this.pickups.middle">Middle: {{ this.pickups.middle }}</li>
+          <li v-if="this.pickups.neck">Neck: {{ this.pickups.neck }}</li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>
@@ -38,6 +46,7 @@ export default {
         fretboard: filteredGuitar.fretboard,
         origin: filteredGuitar.origin,
         ownership: filteredGuitar.ownership,
+        pickups: filteredGuitar.pickups,
         slug: slug,
       };
     } else {
