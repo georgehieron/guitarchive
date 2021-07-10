@@ -11,6 +11,7 @@
       </li>
       <li>{{ this.colour.name }}</li>
       <li>{{ this.fretboard }}</li>
+      <li>{{ this.origin }}</li>
       <li>{{ this.ownership }}</li>
     </ul>
   </div>
@@ -35,6 +36,7 @@ export default {
         colour: filteredGuitar.colour,
         construction: filteredGuitar.construction,
         fretboard: filteredGuitar.fretboard,
+        origin: filteredGuitar.origin,
         ownership: filteredGuitar.ownership,
         slug: slug,
       };

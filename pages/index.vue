@@ -111,6 +111,26 @@
       <br /><br />
 
       <label
+        >Origin
+        <select
+          name="origin"
+          id="origin"
+          v-model="selectedOrigin"
+          :disabled="disabled == 1"
+        >
+          <option value="All">All</option>
+          <option
+            v-for="(origin, index) in origins"
+            v-bind:value="origin"
+            v-bind:key="index"
+          >
+            {{ origin }}
+          </option>
+        </select>
+      </label>
+      <br /><br />
+
+      <label
         >Ownership
         <select
           name="ownership"
@@ -140,6 +160,7 @@
             <li>{{ item.colour.name }}</li>
             <li>{{ item.construction.type }}</li>
             <li>{{ item.fretboard }}</li>
+            <li>{{ item.origin }}</li>
             <li>{{ item.ownership }}</li>
           </ul>
         </NuxtLink>
@@ -156,6 +177,7 @@ import {
   colours,
   constructions,
   fretboards,
+  origins,
   ownerships,
 } from "../assets/js/guitars.js";
 
@@ -179,6 +201,9 @@ export default {
       fretboards: fretboards,
       selectedFretboard: "",
 
+      origins: origins,
+      selectedOrigin: "",
+
       ownerships: ownerships,
       selectedOwnership: "",
 
@@ -194,6 +219,7 @@ export default {
     this.selectedColour = "All";
     this.selectedConstruction = "All";
     this.selectedFretboard = "All";
+    this.selectedOrigin = "All";
     this.selectedOwnership = "All";
   },
 
@@ -204,6 +230,7 @@ export default {
         colourFilter = this.selectedColour,
         constructionFilter = this.selectedConstruction,
         fretboardFilter = this.selectedFretboard,
+        originFilter = this.selectedOrigin,
         ownershipFilter = this.selectedOwnership,
         search = this.search;
       return this.guitars.filter(function (g) {
@@ -234,6 +261,11 @@ export default {
           if (filtered) {
             if (fretboardFilter && fretboardFilter != "All") {
               filtered = g.fretboard == fretboardFilter;
+            }
+          }
+          if (filtered) {
+            if (originFilter && originFilter != "All") {
+              filtered = g.origin == originFilter;
             }
           }
           if (filtered) {
