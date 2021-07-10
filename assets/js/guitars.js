@@ -18,7 +18,11 @@ const guitars = [
         fretboard: "Maple",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2021",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/S",
             bridge: "Ibanez V8",
@@ -27,6 +31,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2020",
+        mods: "None",
     },
     {
         brand: "Ibanez",
@@ -47,7 +53,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2020",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/H",
             bridge: "EMG 81",
@@ -56,6 +66,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2009",
+        mods: "None",
     },
     {
         brand: "Solar",
@@ -76,7 +88,11 @@ const guitars = [
         fretboard: "Ebony",
         frets: "24",
         origin: "Indonesia",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2019",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/H",
             bridge: "Seymour Duncan Solar Bridge",
@@ -85,6 +101,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2018",
+        mods: "None",
     },
     {
         brand: "Ibanez",
@@ -105,7 +123,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "24",
         origin: "Indonesia",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "2018",
+            year_sold: "2019",
+        },
         pickups: {
             conf: "H/H",
             bridge: "Ibanez IBZ-8",
@@ -114,6 +136,8 @@ const guitars = [
         },
         scale: "27\"",
         strings: "8",
+        year: "2014",
+        mods: "Neck pickup",
     },
     {
         brand: "Ibanez",
@@ -134,7 +158,11 @@ const guitars = [
         fretboard: "Maple",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2018",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/S/H",
             bridge: "DiMarzio PAF Pro",
@@ -143,6 +171,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2008",
+        mods: "None",
     },
     {
         brand: "Ibanez",
@@ -163,7 +193,11 @@ const guitars = [
         fretboard: "Maple",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2017",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/S/H",
             bridge: "DiMarzio PAF Pro",
@@ -172,6 +206,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "1990",
+        mods: "None",
     },
     {
         brand: "Ibanez",
@@ -192,7 +228,11 @@ const guitars = [
         fretboard: "Maple",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "2016",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/H",
             bridge: "DiMarzio Crunch Lab",
@@ -201,6 +241,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "7",
+        year: "2009",
+        mods: "Pickups",
     },
     {
         brand: "Ibanez",
@@ -221,7 +263,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "22",
         origin: "South Korea",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "2016",
+            year_sold: "~2018",
+        },
         pickups: {
             conf: "H/S/H",
             bridge: "Ibanez PSND2",
@@ -230,6 +276,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2003",
+        mods: "None",
     },
     {
         brand: "Ibanez",
@@ -250,7 +298,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "24",
         origin: "Japan",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "~2015",
+            year_sold: "2017",
+        },
         pickups: {
             conf: "H/H",
             bridge: "Ibanez V87",
@@ -259,6 +311,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "7",
+        year: "2007",
+        mods: "None",
     },
     {
         brand: "Schecter",
@@ -279,7 +333,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "24",
         origin: "",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "~2010",
+            year_sold: "2013",
+        },
         pickups: {
             conf: "H/H",
             bridge: "",
@@ -288,6 +346,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "7",
+        year: "1999",
+        mods: "None",
     },
     {
         brand: "ESP",
@@ -308,7 +368,11 @@ const guitars = [
         fretboard: "Ebony",
         frets: "24",
         origin: "South Korea",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "2008",
+            year_sold: "2019",
+        },
         pickups: {
             conf: "H",
             bridge: "EMG HZ-H4",
@@ -317,6 +381,8 @@ const guitars = [
         },
         scale: "25.5\"",
         strings: "6",
+        year: "2008",
+        mods: "None",
     },
     {
         brand: "Vintage",
@@ -337,7 +403,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "22",
         origin: "",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "~2007",
+            year_sold: "~2016",
+        },
         pickups: {
             conf: "H/H",
             bridge: "Wilkinson MWVC",
@@ -346,6 +416,8 @@ const guitars = [
         },
         scale: "24.75\"",
         strings: "6",
+        year: "",
+        mods: "None",
     },
     {
         brand: "Jackson",
@@ -366,7 +438,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "24",
         origin: "Japan",
-        ownership: "Own",
+        ownership: {
+            status: "Own",
+            year_bought: "~2006",
+            year_sold: "",
+        },
         pickups: {
             conf: "H/S/S",
             bridge: "DiMarzio Super Distortion",
@@ -375,6 +451,8 @@ const guitars = [
         },
         scale: "24.75\"",
         strings: "6",
+        year: "1994",
+        mods: "Tremolo, Pickups, Pots, Knobs, Switch tip",
     },
     {
         brand: "Crafter",
@@ -395,7 +473,11 @@ const guitars = [
         fretboard: "Rosewood",
         frets: "22",
         origin: "",
-        ownership: "Sold",
+        ownership: {
+            status: "Sold",
+            year_bought: "2005",
+            year_sold: "~2008",
+        },
         pickups: {
             conf: "H/H",
             bridge: "",
@@ -404,6 +486,8 @@ const guitars = [
         },
         scale: "",
         strings: "6",
+        year: "",
+        mods: "None",
     },
 ];
 
@@ -444,8 +528,8 @@ guitars.forEach((g) => {
     if (g.origin != "" && origins.indexOf(g.origin) === -1) {
         origins.push(g.origin);
     }
-    if (ownerships.indexOf(g.ownership) === -1) {
-        ownerships.push(g.ownership);
+    if (ownerships.indexOf(g.ownership.status) === -1) {
+        ownerships.push(g.ownership.status);
     }
     if (pickups.indexOf(g.pickups.conf) === -1) {
         pickups.push(g.pickups.conf);

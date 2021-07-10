@@ -242,7 +242,7 @@
             <li>{{ item.fretboard }}</li>
             <li>{{ item.frets }}</li>
             <li v-if="item.origin">{{ item.origin }}</li>
-            <li>{{ item.ownership }}</li>
+            <li>{{ item.ownership.status }}</li>
             <li>{{ item.pickups.conf }}</li>
             <li>{{ item.scale }}</li>
             <li>{{ item.strings }}</li>
@@ -386,7 +386,7 @@ export default {
           }
           if (filtered) {
             if (ownershipFilter && ownershipFilter != "All") {
-              filtered = g.ownership == ownershipFilter;
+              filtered = g.ownership.status == ownershipFilter;
             }
           }
           if (filtered) {

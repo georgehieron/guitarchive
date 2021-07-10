@@ -11,8 +11,15 @@
       </li>
       <li>{{ this.colour.name }}</li>
       <li>{{ this.fretboard }}</li>
+      <li>{{ this.frets }}</li>
       <li v-if="this.origin">{{ this.origin }}</li>
-      <li>{{ this.ownership }}</li>
+      <li>
+        {{ this.ownership.status }}
+        <ul v-if="this.ownership.year_bought">
+            <li>Year bought: {{ this.ownership.year_bought }}</li>
+            <li v-if="this.ownership.year_sold">Year sold: {{ this.ownership.year_sold }}</li>
+        </ul>
+      </li>
       <li>
         {{ this.pickups.conf }}
         <ul v-if="this.pickups.bridge">
@@ -21,6 +28,9 @@
           <li v-if="this.pickups.neck">Neck: {{ this.pickups.neck }}</li>
         </ul>
       </li>
+      <li>{{ this.scale }}</li>
+      <li>{{ this.strings }}</li>
+      <li>{{ this.year }}</li>
     </ul>
   </div>
 </template>
@@ -44,9 +54,13 @@ export default {
         colour: filteredGuitar.colour,
         construction: filteredGuitar.construction,
         fretboard: filteredGuitar.fretboard,
+        frets: filteredGuitar.frets,
         origin: filteredGuitar.origin,
         ownership: filteredGuitar.ownership,
         pickups: filteredGuitar.pickups,
+        scale: filteredGuitar.scale,
+        strings: filteredGuitar.strings,
+        year: filteredGuitar.year,
         slug: slug,
       };
     } else {
