@@ -1,6 +1,10 @@
 export default {
-    css: [
-        "~/assets/css/reset.css",
-        "~/assets/css/main.css",
-    ],
+    buildModules: ["@nuxtjs/google-fonts"],
+    css: ["~/assets/css/reset.css", "~/assets/css/main.css"],
+    googleFonts: {
+        families: {
+            "Coda": [400, 800],
+        },
+        display: "swap",
+    },
 };

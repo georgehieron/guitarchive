@@ -2,16 +2,35 @@
 
 :root {
     --color-base: #232931;
-    --color-text: #EEE;
-    --color-primary: #29C7AC;
-    --color-shade: #393E46;
+    --color-text: #eee;
+    --color-primary: #29c7ac;
+    --color-shade: #393e46;
+    --space: max(3vw, 1.5rem);
+    --border-radius: 4px;
+    --transition: 0.25s ease;
 }
 
+:focus {
+    outline: .2rem dotted var(--color-primary);
+    outline-offset: .1rem;
+}
+
+::selection {
+    color: var(--color-base);
+    background-color: var(--color-primary);
+}
 
 body {
     background-color: var(--color-base);
     color: var(--color-text);
-    padding: max(3vw, 1.5rem);
+    font-family: "Coda", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 body,
@@ -20,30 +39,46 @@ select {
     color: var(--color-text);
 }
 
-option {
-    color: var(--color-base);
+label[data-filtered="true"] {
+    background-image: url("~assets/img/filtered.svg");
+    background-position: top right 0.4em;
+    background-repeat: no-repeat;
+    background-size: 1.25em;
+}
+
+label[data-filtered="true"] select {
+    background-color: var(--color-shade);
+    box-shadow: 0 0 4px 2px var(--color-primary);
 }
 
 input,
 select {
     appearance: none;
+    padding-left: 0.5em;
     padding-right: 2em;
     border: 2px solid var(--color-text);
-    background-color: transparent;
-    background-position: center right 0.333em;
+    border-radius: var(--border-radius);
+    background-color: var(--color-base);
+    background-position: center right 0.25em;
     background-repeat: no-repeat;
-    background-size: 1.333em;
+    background-size: 1.25em;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 }
 
 input[type="search"] {
-    background-image: url('~assets/img/search.svg');
+    background-image: url("~assets/img/search.svg");
 }
 
 select {
-    background-image: url('~assets/img/chevron.svg');
+    background-image: url("~assets/img/chevron.svg");
+    cursor: pointer;
+}
+
+select:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 label > input,
@@ -54,26 +89,64 @@ label > select {
 
 a {
     color: var(--color-primary);
-    text-shadow: 0 0 3px;
+    transition: var(--transition) text-shadow;
 }
 
-.guitar-filter,
-.guitar-list {
+a:hover,
+a:focus {
+    text-shadow: 0 0 2px;
+}
+
+.wrapper {
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.padded {
+    padding: var(--space);
+}
+
+.guitar-filter-wrap{
+    background-color: var(--color-shade);
+}
+
+form.guitar-filter,
+ul.guitar-list {
     display: grid;
     grid-column-gap: max(3vw, 1.5rem);
-    grid-row-gap: 1rem;
-    align-items: end;
     margin-bottom: max(3vw, 1.5rem);
+    padding: var(--space);
 }
 
 .guitar-filter {
     grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 1rem;
     align-items: end;
 }
 
 .guitar-list {
     grid-template-columns: 1fr;
-    align-items: start;
+    grid-row-gap: var(--space);
+    align-items: stretch;
+}
+
+.guitar-list > li {
+    background-color: var(--color-shade);
+}
+
+.guitar-list > li > a {
+    display: block;
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    transition: var(--transition) box-shadow;
+}
+
+.guitar-list > li > a:hover,
+.guitar-list > li > a:focus {
+    box-shadow: 0 0 4px 2px var(--color-primary);
 }
 
 @media screen and (min-width: 36rem) {
@@ -81,7 +154,6 @@ a {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media screen and (min-width: 48rem) {
     .guitar-filter,
