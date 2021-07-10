@@ -1,0 +1,91 @@
+/* https://colorhunt.co/palette/232931393e464ecca3eeeeee */
+
+:root {
+    --color-base: #232931;
+    --color-text: #EEE;
+    --color-primary: #29C7AC;
+    --color-shade: #393E46;
+}
+
+
+body {
+    background-color: var(--color-base);
+    color: var(--color-text);
+    padding: max(3vw, 1.5rem);
+}
+
+body,
+input,
+select {
+    color: var(--color-text);
+}
+
+option {
+    color: var(--color-base);
+}
+
+input,
+select {
+    appearance: none;
+    padding-right: 2em;
+    border: 2px solid var(--color-text);
+    background-color: transparent;
+    background-position: center right 0.333em;
+    background-repeat: no-repeat;
+    background-size: 1.333em;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+input[type="search"] {
+    background-image: url('~assets/img/search.svg');
+}
+
+select {
+    background-image: url('~assets/img/chevron.svg');
+}
+
+label > input,
+label > select {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: var(--color-primary);
+    text-shadow: 0 0 3px;
+}
+
+.guitar-filter,
+.guitar-list {
+    display: grid;
+    grid-column-gap: max(3vw, 1.5rem);
+    grid-row-gap: 1rem;
+    align-items: end;
+    margin-bottom: max(3vw, 1.5rem);
+}
+
+.guitar-filter {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+}
+
+.guitar-list {
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+@media screen and (min-width: 36rem) {
+    .guitar-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media screen and (min-width: 48rem) {
+    .guitar-filter,
+    .guitar-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,13 +1,11 @@
 <template>
   <main>
-    <form>
+    <form class="guitar-filter">
       <div class="search-wrapper">
-        <label>Search brand/model:</label>
-        <input
-          type="text"
-          v-model="search"
-          placeholder="Search brand/model..."
-        />
+        <label
+          >Search brand/model:
+          <input type="search" v-model="search" placeholder="Search..." />
+        </label>
       </div>
 
       <label
@@ -28,7 +26,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Bridge
@@ -48,7 +45,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Colour
@@ -68,7 +64,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Construction
@@ -88,7 +83,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Fretboard
@@ -108,7 +102,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Frets
@@ -128,7 +121,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Origin
@@ -148,7 +140,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Ownership
@@ -168,10 +159,9 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
-        >Pickup Configuration
+        >Pickup config.
         <select
           name="pickups"
           id="pickups"
@@ -188,7 +178,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Scale
@@ -208,7 +197,6 @@
           </option>
         </select>
       </label>
-      <br /><br />
 
       <label
         >Strings
@@ -228,10 +216,9 @@
           </option>
         </select>
       </label>
-      <br /><br />
     </form>
 
-    <ul>
+    <ul class="guitar-list">
       <li v-for="(item, index) in filteredItems" v-bind:key="index">
         <NuxtLink :to="`${item.brandSlug}/${item.modelSlug}`">
           <span>{{ item.name }}</span>
@@ -244,7 +231,7 @@
             <li v-if="item.origin">{{ item.origin }}</li>
             <li>{{ item.ownership.status }}</li>
             <li>{{ item.pickups.conf }}</li>
-            <li>{{ item.scale }}</li>
+            <li v-if="item.scale">{{ item.scale }}</li>
             <li>{{ item.strings }}</li>
           </ul>
         </NuxtLink>
