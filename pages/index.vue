@@ -221,24 +221,26 @@
             </option>
           </select>
         </label>
+
+        <input type="reset" class="btn reset-filters" v-on:click="clearFilters" />
       </form>
     </div>
 
     <ul class="guitar-list wrapper">
-      <li v-for="(item, index) in filteredItems" v-bind:key="index">
-        <NuxtLink :to="`${item.brandSlug}/${item.modelSlug}`">
-          <span>{{ item.name }}</span>
+      <li v-for="(gtr, index) in filteredGuitars" v-bind:key="index">
+        <NuxtLink :to="`${gtr.brandSlug}/${gtr.modelSlug}`">
+          <span>{{ gtr.name }}</span>
           <ul>
-            <li>{{ item.bridge.name }}</li>
-            <li>{{ item.colour.name }}</li>
-            <li>{{ item.construction.type }}</li>
-            <li>{{ item.fretboard }}</li>
-            <li>{{ item.frets }}</li>
-            <li v-if="item.origin">{{ item.origin }}</li>
-            <li>{{ item.ownership.status }}</li>
-            <li>{{ item.pickups.conf }}</li>
-            <li v-if="item.scale">{{ item.scale }}</li>
-            <li>{{ item.strings }}</li>
+            <li>{{ gtr.bridge.name }}</li>
+            <li>{{ gtr.colour.name }}</li>
+            <li>{{ gtr.construction.type }}</li>
+            <li>{{ gtr.fretboard }}</li>
+            <li>{{ gtr.frets }}</li>
+            <li v-if="gtr.origin">{{ gtr.origin }}</li>
+            <li>{{ gtr.ownership.status }}</li>
+            <li>{{ gtr.pickups.conf }}</li>
+            <li v-if="gtr.scale">{{ gtr.scale }}</li>
+            <li>{{ gtr.strings }}</li>
           </ul>
         </NuxtLink>
       </li>
@@ -317,6 +319,22 @@ export default {
     };
   },
 
+  methods: {
+    clearFilters: function () {
+        this.selectedBrand = "All",
+        this.selectedBridge = "All",
+        this.selectedColour = "All",
+        this.selectedConstruction = "All",
+        this.selectedFretboard = "All",
+        this.selectedFrets = "All",
+        this.selectedOrigin = "All",
+        this.selectedOwnership = "All",
+        this.selectedPickups = "All",
+        this.selectedScale = "All",
+        this.selectedStrings = "All";
+    },
+  },
+
   mounted: function () {
     this.selectedBrand = "All";
     this.selectedBridge = "All";
@@ -332,7 +350,7 @@ export default {
   },
 
   computed: {
-    filteredItems: function () {
+    filteredGuitars: function () {
       let brandFilter = this.selectedBrand,
         bridgeFilter = this.selectedBridge,
         colourFilter = this.selectedColour,
@@ -352,7 +370,7 @@ export default {
           filtered = g.name.toLowerCase().includes(search.toLowerCase());
         } else {
           this.disabled = 0;
-          //   BRAND
+          // BRAND
           if (brandFilter != "All") {
             filtered = g.brand == brandFilter;
           }
