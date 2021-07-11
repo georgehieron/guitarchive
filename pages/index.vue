@@ -23,6 +23,25 @@
           </label>
         </div>
 
+        <label :data-filtered="bodyFiltered == 1"
+          >Body material
+          <select
+            name="body"
+            id="body"
+            v-model="selectedBody"
+            :disabled="disabled == 1"
+          >
+            <option value="All">All</option>
+            <option
+              v-for="(body, index) in bodies"
+              v-bind:value="body"
+              v-bind:key="index"
+            >
+              {{ body }}
+            </option>
+          </select>
+        </label>
+
         <label :data-filtered="brandFiltered == 1"
           >Brand
           <select
@@ -30,7 +49,6 @@
             id="brand"
             v-model="selectedBrand"
             :disabled="disabled == 1"
-            :data-filtered="brandFiltered == 1"
           >
             <option value="All">All</option>
             <option
@@ -44,7 +62,7 @@
         </label>
 
         <label :data-filtered="bridgeFiltered == 1"
-          >Bridge
+          >Bridge type
           <select
             name="bridge"
             id="bridge"
@@ -120,7 +138,7 @@
         </label>
 
         <label :data-filtered="fretsFiltered == 1"
-          >Frets
+          >No. Frets
           <select
             name="frets"
             id="frets"
@@ -196,7 +214,7 @@
         </label>
 
         <label :data-filtered="scaleFiltered == 1"
-          >Scale
+          >Scale length
           <select
             name="scale"
             id="scale"
@@ -266,6 +284,7 @@
 <script>
 import {
   guitars,
+  bodies,
   brands,
   bridges,
   colours,
@@ -285,6 +304,10 @@ export default {
       title: "Guitarchive",
 
       guitars: guitars,
+
+      bodies: bodies,
+      selectedBody: "",
+      bodyFiltered: 0,
 
       brands: brands,
       selectedBrand: "",
@@ -344,7 +367,8 @@ export default {
 
   methods: {
     clearFilters: function () {
-      (this.selectedBrand = "All"),
+      (this.selectedBody = "All"),
+        (this.selectedBrand = "All"),
         (this.selectedBridge = "All"),
         (this.selectedColour = "All"),
         (this.selectedConstruction = "All"),
@@ -364,6 +388,7 @@ export default {
   },
 
   mounted: function () {
+    this.selectedBody = "All";
     this.selectedBrand = "All";
     this.selectedBridge = "All";
     this.selectedColour = "All";
@@ -379,7 +404,8 @@ export default {
 
   computed: {
     filteredGuitars: function () {
-      let brandFilter = this.selectedBrand,
+      let bodyFilter = this.selectedBody,
+        brandFilter = this.selectedBrand,
         bridgeFilter = this.selectedBridge,
         colourFilter = this.selectedColour,
         constructionFilter = this.selectedConstruction,
@@ -398,9 +424,18 @@ export default {
           filtered = g.name.toLowerCase().includes(search.toLowerCase());
         } else {
           this.disabled = 0;
+          // BODY
+          if (bodyFilter != "All") {
+            filtered = g.body.material == bodyFilter;
+          }
+          bodyFilter != "All"
+            ? (this.bodyFiltered = 1)
+            : (this.bodyFiltered = 0);
           // BRAND
-          if (brandFilter != "All") {
-            filtered = g.brand == brandFilter;
+          if (filtered) {
+            if (brandFilter != "All") {
+              filtered = g.brand == brandFilter;
+            }
           }
           brandFilter != "All"
             ? (this.brandFiltered = 1)

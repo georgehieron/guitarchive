@@ -2,7 +2,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG565EG Genesis",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge",
@@ -42,7 +45,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG8420ZE",
-        body: "African Mahogany w/ AAA flamed maple top & binding",
+        body: {
+            material: "Mahogany",
+            detail: "African w/ AAA flamed maple top & binding",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Zero tremolo w/ ZPS3 stabilizer",
@@ -82,7 +88,10 @@ const guitars = [
     {
         brand: "Solar",
         model: "S1.6LB",
-        body: "Mahogany",
+        body: {
+            material: "Mahogany",
+            detail: "",
+        },
         bridge: {
             type: "Evertune",
             name: "Evertune F6",
@@ -122,7 +131,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG8FM",
-        body: "Basswood w/ flamed maple top",
+        body: {
+            material: "Basswood",
+            detail: "w/ flamed maple top",
+        },
         bridge: {
             type: "Fixed",
             name: "Generic",
@@ -162,7 +174,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "PGM301",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Fixed",
             name: "Gotoh GTC101",
@@ -202,7 +217,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "JEM777DY",
-        body: "American Basswood",
+        body: {
+            material: "Basswood",
+            detail: "American",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge",
@@ -242,7 +260,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG1527M",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Pro 7",
@@ -282,7 +303,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "S470FOF",
-        body: "Mahogany",
+        body: {
+            material: "Mahogany",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez ZR tremolo w/ ZPS2 stabilizer",
@@ -322,7 +346,10 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG1527RB",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Pro 7",
@@ -362,7 +389,10 @@ const guitars = [
     {
         brand: "Schecter",
         model: "C-7 Diamond Series",
-        body: "Ash",
+        body: {
+            material: "Ash",
+            detail: "",
+        },
         bridge: {
             type: "Tune-O-Matic",
             name: "Generic",
@@ -402,7 +432,10 @@ const guitars = [
     {
         brand: "ESP",
         model: "LTD Alexi-600 SE",
-        body: "Alder",
+        body: {
+            material: "Alder",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Floyd Rose Original",
@@ -442,7 +475,10 @@ const guitars = [
     {
         brand: "Vintage",
         model: "V100BB",
-        body: "Mahogany",
+        body: {
+            material: "Mahogany",
+            detail: "",
+        },
         bridge: {
             type: "Tune-O-Matic",
             name: "Wilkinson",
@@ -482,7 +518,10 @@ const guitars = [
     {
         brand: "Jackson",
         model: "Dinky Fusion EX Professional",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Floating Tremolo",
             name: "Gotoh",
@@ -522,7 +561,10 @@ const guitars = [
     {
         brand: "Crafter",
         model: "Cruiser RG600",
-        body: "Basswood",
+        body: {
+            material: "Basswood",
+            detail: "",
+        },
         bridge: {
             type: "Tune-O-Matic",
             name: "Generic",
@@ -554,13 +596,14 @@ const guitars = [
             middle: "",
             neck: "",
         },
-        scale: "",
+        scale: "25.5\"",
         strings: "6",
         year: "",
         mods: "None",
     },
 ];
 
+const bodies = [];
 const brands = [];
 const bridges = [];
 const colours = [];
@@ -577,6 +620,9 @@ guitars.forEach((g) => {
     g.name = g.brand + " " + g.model;
     g.brandSlug = g.brand.replace(/ /g, "-").toLowerCase();
     g.modelSlug = g.model.replace(/ /g, "-").toLowerCase();
+    if (bodies.indexOf(g.body.material) === -1) {
+        bodies.push(g.body.material);
+    }
     if (brands.indexOf(g.brand) === -1) {
         brands.push(g.brand);
     }
@@ -612,6 +658,7 @@ guitars.forEach((g) => {
     }
 });
 
+bodies.sort();
 brands.sort();
 bridges.sort();
 colours.sort();
@@ -626,6 +673,7 @@ strings.sort();
 
 export {
     guitars,
+    bodies,
     brands,
     bridges,
     colours,

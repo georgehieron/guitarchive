@@ -5,6 +5,7 @@
     --color-text: #f6e9e9;
     --color-primary: burlywood;
     --color-shade: #272121;
+    --color-accent: #e16428;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
     --transition: 0.25s ease;
@@ -47,7 +48,7 @@ label[data-filtered="true"] {
 
 label[data-filtered="true"] select {
     background-color: var(--color-shade);
-    box-shadow: 0 0 4px 2px var(--color-primary);
+    box-shadow: 0 0 4px 2px var(--color-accent);
 }
 
 input,
@@ -123,7 +124,40 @@ button:hover,
 button:focus,
 .btn:hover,
 .btn:focus {
-    box-shadow: 0 0 4px 2px var(--color-primary);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 4px 2px var(--color-accent);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    vertical-align: top;
+    padding-top: .5em;
+}
+
+table tr + tr {
+    border-top: 1px solid var(--color-primary);
+}
+
+table th,
+table td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+table th {
+    padding-left: .5em;
+    padding-right: .75em;
+    text-align: right;
+}
+
+table td {
+    padding-left: .75em;
+    padding-right: .5em;
+    border-left: 1px solid var(--color-primary);
 }
 
 .wrapper {
@@ -180,6 +214,14 @@ ul.guitar-list {
     box-shadow: 0 0 4px 2px var(--color-primary);
 }
 
+.search-wrapper {
+    grid-column: 1/3;
+}
+
+.search-wrapper + label {
+    grid-column: 1;
+}
+
 .reset-filters {
     grid-column: 2;
     margin-top: var(--space);
@@ -208,5 +250,9 @@ ul.guitar-list {
     .guitar-filter,
     .guitar-list {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .search-wrapper {
+        grid-column: 2;
     }
 }
