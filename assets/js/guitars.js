@@ -2,6 +2,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG565EG Genesis",
+        body: "Basswood",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge",
@@ -17,6 +18,10 @@ const guitars = [
         },
         fretboard: "Maple",
         frets: "24",
+        neck: {
+            material: "Maple / Walnut",
+            pcs: "5",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -37,6 +42,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG8420ZE",
+        body: "African Mahogany w/ AAA flamed maple top & binding",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Zero tremolo w/ ZPS3 stabilizer",
@@ -52,6 +58,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
+        neck: {
+            material: "Maple / Walnut",
+            pcs: "5",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -72,6 +82,7 @@ const guitars = [
     {
         brand: "Solar",
         model: "S1.6LB",
+        body: "Mahogany",
         bridge: {
             type: "Evertune",
             name: "Evertune F6",
@@ -87,6 +98,10 @@ const guitars = [
         },
         fretboard: "Ebony",
         frets: "24",
+        neck: {
+            material: "Maple / Jatoba",
+            pcs: "5",
+        },
         origin: "Indonesia",
         ownership: {
             status: "Own",
@@ -107,6 +122,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG8FM",
+        body: "Basswood w/ flamed maple top",
         bridge: {
             type: "Fixed",
             name: "Generic",
@@ -122,6 +138,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
+        neck: {
+            material: "Maple / Walnut",
+            pcs: "5",
+        },
         origin: "Indonesia",
         ownership: {
             status: "Sold",
@@ -142,6 +162,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "PGM301",
+        body: "Basswood",
         bridge: {
             type: "Fixed",
             name: "Gotoh GTC101",
@@ -157,6 +178,10 @@ const guitars = [
         },
         fretboard: "Maple",
         frets: "24",
+        neck: {
+            material: "Maple / Walnut",
+            pcs: "5",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -177,6 +202,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "JEM777DY",
+        body: "American Basswood",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge",
@@ -192,6 +218,10 @@ const guitars = [
         },
         fretboard: "Maple",
         frets: "24",
+        neck: {
+            material: "Maple",
+            pcs: "1",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -212,6 +242,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG1527M",
+        body: "Basswood",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Pro 7",
@@ -227,6 +258,10 @@ const guitars = [
         },
         fretboard: "Maple",
         frets: "24",
+        neck: {
+            material: "Maple / Wenge",
+            pcs: "5",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -247,6 +282,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "S470FOF",
+        body: "Mahogany",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez ZR tremolo w/ ZPS2 stabilizer",
@@ -262,6 +298,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "22",
+        neck: {
+            material: "Maple",
+            pcs: "3",
+        },
         origin: "South Korea",
         ownership: {
             status: "Sold",
@@ -282,6 +322,7 @@ const guitars = [
     {
         brand: "Ibanez",
         model: "RG1527RB",
+        body: "Basswood",
         bridge: {
             type: "Floating Tremolo",
             name: "Ibanez Edge Pro 7",
@@ -297,6 +338,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
+        neck: {
+            material: "Maple / Wenge",
+            pcs: "5",
+        },
         origin: "Japan",
         ownership: {
             status: "Sold",
@@ -316,7 +361,8 @@ const guitars = [
     },
     {
         brand: "Schecter",
-        model: "Omen-7 Diamond Series",
+        model: "C-7 Diamond Series",
+        body: "Ash",
         bridge: {
             type: "Tune-O-Matic",
             name: "Generic",
@@ -332,6 +378,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
+        neck: {
+            material: "Maple",
+            pcs: "1",
+        },
         origin: "",
         ownership: {
             status: "Sold",
@@ -340,9 +390,9 @@ const guitars = [
         },
         pickups: {
             conf: "H/H",
-            bridge: "",
+            bridge: "Duncan Designed",
             middle: "",
-            neck: "",
+            neck: "Duncan Designed",
         },
         scale: "25.5\"",
         strings: "7",
@@ -352,6 +402,7 @@ const guitars = [
     {
         brand: "ESP",
         model: "LTD Alexi-600 SE",
+        body: "Alder",
         bridge: {
             type: "Floating Tremolo",
             name: "Floyd Rose Original",
@@ -367,6 +418,10 @@ const guitars = [
         },
         fretboard: "Ebony",
         frets: "24",
+        neck: {
+            material: "Maple",
+            pcs: "3",
+        },
         origin: "South Korea",
         ownership: {
             status: "Sold",
@@ -387,6 +442,7 @@ const guitars = [
     {
         brand: "Vintage",
         model: "V100BB",
+        body: "Mahogany",
         bridge: {
             type: "Tune-O-Matic",
             name: "Wilkinson",
@@ -402,7 +458,11 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "22",
-        origin: "",
+        neck: {
+            material: "Mahogany",
+            pcs: "1",
+        },
+        origin: "China",
         ownership: {
             status: "Sold",
             year_bought: "~2007",
@@ -422,6 +482,7 @@ const guitars = [
     {
         brand: "Jackson",
         model: "Dinky Fusion EX Professional",
+        body: "Basswood",
         bridge: {
             type: "Floating Tremolo",
             name: "Gotoh",
@@ -437,6 +498,10 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
+        neck: {
+            material: "Eastern Maple",
+            pcs: "1",
+        },
         origin: "Japan",
         ownership: {
             status: "Own",
@@ -457,6 +522,7 @@ const guitars = [
     {
         brand: "Crafter",
         model: "Cruiser RG600",
+        body: "Basswood",
         bridge: {
             type: "Tune-O-Matic",
             name: "Generic",
@@ -472,7 +538,11 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "22",
-        origin: "",
+        neck: {
+            material: "Maple",
+            pcs: "1",
+        },
+        origin: "China",
         ownership: {
             status: "Sold",
             year_bought: "2005",
