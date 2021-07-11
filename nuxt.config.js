@@ -3,7 +3,7 @@ export default {
     css: ["~/assets/css/reset.css", "~/assets/css/main.css"],
     googleFonts: {
         families: {
-            "Coda": [400, 800],
+            "Coda": [400],
         },
         display: "swap",
     },

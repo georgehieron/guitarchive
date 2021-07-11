@@ -28,7 +28,6 @@ body {
 }
 
 h1 {
-    font-weight: 800;
     text-align: center;
     text-transform: uppercase;
 }
@@ -71,9 +70,15 @@ input[type="search"] {
     background-image: url("~assets/img/search.svg");
 }
 
+.btn,
+button,
+select,
+input[type="reset"] {
+    cursor: pointer;
+}
+
 select {
     background-image: url("~assets/img/chevron.svg");
-    cursor: pointer;
 }
 
 select:disabled {
