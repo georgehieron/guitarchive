@@ -49,6 +49,12 @@
 import { guitars } from "../../assets/js/guitars.js";
 
 export default {
+  data: function () {
+    return {
+      title: "Guitarchive",
+    };
+  },
+
   async asyncData({ params, redirect }) {
     const slug = params.slug;
 
@@ -76,6 +82,12 @@ export default {
     } else {
       redirect("/");
     }
+  },
+
+  head() {
+    return {
+      title: this.name + " | " + this.title,
+    };
   },
 };
 </script>

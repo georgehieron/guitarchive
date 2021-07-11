@@ -1,14 +1,25 @@
 <template>
   <main>
     <div class="wrapper padded">
-      <h1>Guitarchive</h1>
+      <h1>{{ this.title }}</h1>
     </div>
     <div class="guitar-filter-wrap">
       <form class="guitar-filter wrapper">
         <div class="search-wrapper">
           <label
             >Search brand/model:
-            <input type="search" v-model="search" placeholder="Search..." />
+            <input
+              type="search"
+              list="guitar-list"
+              v-model="search"
+              v-on:keydown.enter="noDefault"
+              placeholder="Search..."
+            />
+            <datalist id="guitar-list">
+              <option v-for="(gtr, index) in guitars" v-bind:key="index">
+                {{ gtr.name }}
+              </option>
+            </datalist>
           </label>
         </div>
 
@@ -222,7 +233,11 @@
           </select>
         </label>
 
-        <input type="reset" class="btn reset-filters" v-on:click="clearFilters" />
+        <input
+          type="reset"
+          class="btn reset-filters"
+          v-on:click="clearFilters"
+        />
       </form>
     </div>
 
@@ -267,6 +282,8 @@ import {
 export default {
   data: function () {
     return {
+      title: "Guitarchive",
+
       guitars: guitars,
 
       brands: brands,
@@ -319,19 +336,30 @@ export default {
     };
   },
 
+  head() {
+    return {
+      title: this.title,
+    };
+  },
+
   methods: {
     clearFilters: function () {
-        this.selectedBrand = "All",
-        this.selectedBridge = "All",
-        this.selectedColour = "All",
-        this.selectedConstruction = "All",
-        this.selectedFretboard = "All",
-        this.selectedFrets = "All",
-        this.selectedOrigin = "All",
-        this.selectedOwnership = "All",
-        this.selectedPickups = "All",
-        this.selectedScale = "All",
-        this.selectedStrings = "All";
+      (this.selectedBrand = "All"),
+        (this.selectedBridge = "All"),
+        (this.selectedColour = "All"),
+        (this.selectedConstruction = "All"),
+        (this.selectedFretboard = "All"),
+        (this.selectedFrets = "All"),
+        (this.selectedOrigin = "All"),
+        (this.selectedOwnership = "All"),
+        (this.selectedPickups = "All"),
+        (this.selectedScale = "All"),
+        (this.selectedStrings = "All");
+    },
+    noDefault: function (event) {
+      if (event) {
+        event.preventDefault();
+      }
     },
   },
 
