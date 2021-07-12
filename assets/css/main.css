@@ -5,9 +5,10 @@
     --color-text: #f6e9e9;
     --color-primary: burlywood;
     --color-shade: #272121;
-    --color-accent: #e16428;
+    --color-accent: palegoldenrod;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
+    --box-shadow: 0 0 0 2px;
     --transition: 0.25s ease;
 }
 
@@ -48,7 +49,7 @@ label[data-filtered="true"] {
 
 label[data-filtered="true"] select {
     background-color: var(--color-shade);
-    box-shadow: 0 0 4px 2px var(--color-accent);
+    box-shadow: var(--box-shadow) var(--color-accent);
 }
 
 input,
@@ -95,12 +96,12 @@ label > select {
 
 a {
     color: var(--color-primary);
-    transition: var(--transition) text-shadow;
+    transition: var(--transition) color;
 }
 
 a:hover,
 a:focus {
-    text-shadow: 0 0 2px;
+    color: var(--color-accent);
 }
 
 button,
@@ -112,7 +113,6 @@ button,
     letter-spacing: 0.25ch;
     padding: 0.25em 1em;
     text-transform: uppercase;
-    transition: var(--transition) box-shadow;
 }
 
 button:active,
@@ -126,7 +126,6 @@ button:focus,
 .btn:focus {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
-    box-shadow: 0 0 4px 2px var(--color-accent);
 }
 
 table {
@@ -206,12 +205,12 @@ ul.guitar-list {
     padding: 1rem;
     border: 1px solid var(--color-primary);
     border-radius: var(--border-radius);
-    transition: var(--transition) box-shadow, var(--transition) text-shadow;
+    transition: var(--transition) box-shadow, var(--transition) color;
 }
 
 .guitar-list > li > a:hover,
 .guitar-list > li > a:focus {
-    box-shadow: 0 0 4px 2px var(--color-primary);
+    box-shadow: var(--box-shadow) var(--color-accent);
 }
 
 .search-wrapper {
