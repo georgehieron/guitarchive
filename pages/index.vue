@@ -4,7 +4,7 @@
       <h1>{{ this.title }}</h1>
     </div>
     <div class="guitar-filter-wrap">
-      <form class="guitar-filter wrapper">
+      <form class="guitar-filter wrapper padded">
         <div class="search-wrapper">
           <label
             >Search brand/model:
@@ -259,7 +259,7 @@
       </form>
     </div>
 
-    <ul class="guitar-list wrapper">
+    <ul class="guitar-list wrapper padded">
       <li v-for="(gtr, index) in filteredGuitars" v-bind:key="index">
         <NuxtLink :to="`${gtr.brandSlug}/${gtr.modelSlug}`">
           <span>{{ gtr.name }}</span>
