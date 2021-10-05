@@ -1,11 +1,9 @@
-/* https://colorhunt.co/palette/363333272121e16428f6e9e9 */
-
 :root {
-    --color-base: #363333;
+    --color-base: #353030;
     --color-text: #f6e9e9;
-    --color-primary: burlywood;
+    --color-primary: #fca652;
     --color-shade: #272121;
-    --color-accent: palegoldenrod;
+    --color-accent: #ffd57e;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
     --box-shadow: 0 0 0 2px;
@@ -25,7 +23,7 @@
 body {
     background-color: var(--color-base);
     color: var(--color-text);
-    font-family: "Coda", sans-serif;
+    font-family: "Sora", sans-serif;
     font-weight: 400;
 }
 
