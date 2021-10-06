@@ -138,7 +138,7 @@
         </label>
 
         <label :data-filtered="fretsFiltered == 1"
-          >No. Frets
+          >Frets
           <select
             name="frets"
             id="frets"
@@ -275,6 +275,7 @@
             <li v-if="gtr.scale">{{ gtr.scale }}</li>
             <li>{{ gtr.strings }}</li>
           </ul>
+          <img :src="`${gtr.img}`" :alt="`${gtr.name} image`">
         </NuxtLink>
       </li>
     </ul>

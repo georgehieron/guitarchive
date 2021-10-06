@@ -21,6 +21,7 @@ const guitars = [
         },
         fretboard: "Maple",
         frets: "24",
+        img: 'https://source.unsplash.com/720x960/?wood',
         neck: {
             material: "Maple / Walnut",
             pcs: "5",

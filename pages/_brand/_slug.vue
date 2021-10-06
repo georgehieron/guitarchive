@@ -5,7 +5,7 @@
         <h1>{{ this.name }}</h1>
       </div>
       <div class="padded">
-        <table>
+        <table class="guitar-info">
           <tr>
             <th scope="row">Body:</th>
             <td>{{ this.body.material }}<span v-if="this.body.detail">, {{ this.body.detail}}</span></td>
@@ -91,8 +91,9 @@
     </div>
     <div
       class="guitar-img"
-      style="background-image: url(https://source.unsplash.com/720x1280/?wood)"
-    ></div>
+      :style="{ backgroundImage: `url(${this.img})` }"
+    >
+    </div>
   </div>
 </template>
 
@@ -123,6 +124,7 @@ export default {
         construction: filteredGuitar.construction,
         fretboard: filteredGuitar.fretboard,
         frets: filteredGuitar.frets,
+        img: filteredGuitar.img,
         mods: filteredGuitar.mods,
         neck: filteredGuitar.neck,
         origin: filteredGuitar.origin,

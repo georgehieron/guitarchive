@@ -230,11 +230,19 @@ ul.guitar-list > li > a:focus {
     min-height: 100vh;
 }
 
+.guitar-info {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .guitar-img {
     position: relative;
     display: block;
     width: 100%;
     height: 100%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 @media screen and (min-width: 36rem) {
