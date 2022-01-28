@@ -1,9 +1,9 @@
 :root {
-    --color-base: #353030;
+    --color-base: #333;
     --color-text: #f6e9e9;
-    --color-primary: #fca652;
-    --color-shade: #272121;
-    --color-accent: #ffd57e;
+    --color-primary: #ffff47;
+    --color-shade: #212121;
+    --color-accent: #d089ff;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
     --box-shadow: 0 0 0 2px;
@@ -23,7 +23,7 @@
 body {
     background-color: var(--color-base);
     color: var(--color-text);
-    font-family: "Sora", sans-serif;
+    font-family: "Atkinson Hyperlegible", sans-serif;
     font-weight: 400;
 }
 

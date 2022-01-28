@@ -3,14 +3,12 @@
     "name": "index",
     "path": "/",
     "component": "/Users/georgehieron/Sites/guitarchive/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_088dacd3"
+    "chunkName": "pages/index"
   },
   {
     "name": "brand-slug",
     "path": "/:brand/:slug?",
     "component": "/Users/georgehieron/Sites/guitarchive/pages/_brand/_slug.vue",
-    "chunkName": "pages/_brand/_slug",
-    "_name": "_c8dbf05c"
+    "chunkName": "pages/_brand/_slug"
   }
 ]

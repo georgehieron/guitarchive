@@ -3,8 +3,8 @@ export default {
     css: ["~/assets/css/reset.css", "~/assets/css/main.css"],
     googleFonts: {
         families: {
-            Sora: {
-                wght: '100..800'
+            'Atkinson+Hyperlegible': {
+                wght: [400, 700]
             },
         },
         display: "swap",
