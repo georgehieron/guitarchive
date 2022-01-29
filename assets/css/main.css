@@ -1,18 +1,18 @@
 :root {
-    --color-base: #333;
+    --color-base: #262626;
     --color-text: #f6e9e9;
     --color-primary: #ffff47;
-    --color-shade: #212121;
-    --color-accent: #d089ff;
+    --color-shade: #1d1d1d;
+    --color-accent: #8080ff;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
     --box-shadow: 0 0 0 2px;
-    --transition: 0.25s ease;
+    --transition: .25s ease;
 }
 
 :focus {
-    outline: 0.2rem dotted var(--color-primary);
-    outline-offset: 0.1rem;
+    outline: .2rem dotted var(--color-primary);
+    outline-offset: .1rem;
 }
 
 ::selection {
@@ -40,7 +40,7 @@ select {
 
 label[data-filtered="true"] {
     background-image: url("~assets/img/filtered.svg");
-    background-position: top right 0.4em;
+    background-position: top right .4em;
     background-repeat: no-repeat;
     background-size: 1.25em;
 }
@@ -53,12 +53,12 @@ label[data-filtered="true"] select {
 input,
 select {
     appearance: none;
-    padding-left: 0.5em;
+    padding-left: .5em;
     padding-right: 2em;
     border: 2px solid var(--color-text);
     border-radius: var(--border-radius);
     background-color: var(--color-base);
-    background-position: center right 0.25em;
+    background-position: center right .25em;
     background-repeat: no-repeat;
     background-size: 1.25em;
     -webkit-box-shadow: none;
@@ -82,7 +82,7 @@ select {
 }
 
 select:disabled {
-    opacity: 0.4;
+    opacity: .4;
     cursor: not-allowed;
 }
 
@@ -108,14 +108,14 @@ button,
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     font-size: 1.1em;
-    letter-spacing: 0.25ch;
-    padding: 0.25em 1em;
+    letter-spacing: .25ch;
+    padding: .25em 1em;
     text-transform: uppercase;
 }
 
 button:active,
 .btn:active {
-    opacity: 0.9;
+    opacity: .9;
 }
 
 button:hover,

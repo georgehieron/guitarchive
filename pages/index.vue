@@ -12,255 +12,227 @@
               type="search"
               list="guitar-list"
               v-model="search"
-              v-on:keydown.enter="noDefault"
+              @keydown.enter.prevent
               placeholder="Search..."
             />
             <datalist id="guitar-list">
-              <option v-for="(gtr, index) in guitars" v-bind:key="index">
+              <option v-for="gtr in guitars" :key="gtr.modelSlug">
                 {{ gtr.name }}
               </option>
             </datalist>
           </label>
         </div>
 
-        <label :data-filtered="bodyFiltered == 1"
+        <label :data-filtered="bodyFiltered"
           >Body material
           <select
             name="body"
             id="body"
             v-model="selectedBody"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(body, index) in bodies"
-              v-bind:value="body"
-              v-bind:key="index"
-            >
+            <option v-for="body in bodies" :value="body" :key="body.material">
               {{ body }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="brandFiltered == 1"
+        <label :data-filtered="brandFiltered"
           >Brand
           <select
             name="brand"
             id="brand"
             v-model="selectedBrand"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(brand, index) in brands"
-              v-bind:value="brand"
-              v-bind:key="index"
-            >
+            <option v-for="brand in brands" :value="brand" :key="brand">
               {{ brand }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="bridgeFiltered == 1"
+        <label :data-filtered="bridgeFiltered"
           >Bridge type
           <select
             name="bridge"
             id="bridge"
             v-model="selectedBridge"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(bridge, index) in bridges"
-              v-bind:value="bridge"
-              v-bind:key="index"
+              v-for="bridge in bridges"
+              :value="bridge"
+              :key="bridge.type"
             >
               {{ bridge }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="colourFiltered == 1"
+        <label :data-filtered="colourFiltered"
           >Colour
           <select
             name="colour"
             id="colour"
             v-model="selectedColour"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(colour, index) in colours"
-              v-bind:value="colour"
-              v-bind:key="index"
+              v-for="colour in colours"
+              :value="colour"
+              :key="colour.primary"
             >
               {{ colour }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="constructionFiltered == 1"
+        <label :data-filtered="constructionFiltered"
           >Construction
           <select
             name="construction"
             id="construction"
             v-model="selectedConstruction"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(construction, index) in constructions"
-              v-bind:value="construction"
-              v-bind:key="index"
+              v-for="construction in constructions"
+              :value="construction"
+              :key="construction.type"
             >
               {{ construction }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="fretboardFiltered == 1"
+        <label :data-filtered="fretboardFiltered"
           >Fretboard
           <select
             name="fretboard"
             id="fretboard"
             v-model="selectedFretboard"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(fretboard, index) in fretboards"
-              v-bind:value="fretboard"
-              v-bind:key="index"
+              v-for="fretboard in fretboards"
+              :value="fretboard"
+              :key="fretboard"
             >
               {{ fretboard }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="fretsFiltered == 1"
+        <label :data-filtered="fretsFiltered"
           >Frets
           <select
             name="frets"
             id="frets"
             v-model="selectedFrets"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(frets, index) in frets"
-              v-bind:value="frets"
-              v-bind:key="index"
-            >
+            <option v-for="frets in frets" :value="frets" :key="frets">
               {{ frets }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="originFiltered == 1"
+        <label :data-filtered="originFiltered"
           >Origin
           <select
             name="origin"
             id="origin"
             v-model="selectedOrigin"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(origin, index) in origins"
-              v-bind:value="origin"
-              v-bind:key="index"
-            >
+            <option v-for="origin in origins" :value="origin" :key="origin">
               {{ origin }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="ownershipFiltered == 1"
+        <label :data-filtered="ownershipFiltered"
           >Ownership
           <select
             name="ownership"
             id="ownership"
             v-model="selectedOwnership"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(ownership, index) in ownerships"
-              v-bind:value="ownership"
-              v-bind:key="index"
+              v-for="ownership in ownerships"
+              :value="ownership"
+              :key="ownership.status"
             >
               {{ ownership }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="pickupsFiltered == 1"
+        <label :data-filtered="pickupsFiltered"
           >Pickup config.
           <select
             name="pickups"
             id="pickups"
             v-model="selectedPickups"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
             <option
-              v-for="(pickups, index) in pickups"
-              v-bind:value="pickups"
-              v-bind:key="index"
+              v-for="pickups in pickups"
+              :value="pickups"
+              :key="pickups.conf"
             >
               {{ pickups }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="scaleFiltered == 1"
+        <label :data-filtered="scaleFiltered"
           >Scale length
           <select
             name="scale"
             id="scale"
             v-model="selectedScale"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(scale, index) in scales"
-              v-bind:value="scale"
-              v-bind:key="index"
-            >
+            <option v-for="scale in scales" :value="scale" :key="scale">
               {{ scale }}
             </option>
           </select>
         </label>
 
-        <label :data-filtered="stringsFiltered == 1"
+        <label :data-filtered="stringsFiltered"
           >Strings
           <select
             name="strings"
             id="strings"
             v-model="selectedStrings"
-            :disabled="disabled == 1"
+            :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option
-              v-for="(strings, index) in strings"
-              v-bind:value="strings"
-              v-bind:key="index"
-            >
+            <option v-for="strings in strings" :value="strings" :key="strings">
               {{ strings }}
             </option>
           </select>
         </label>
 
-        <input
-          type="reset"
-          class="btn reset-filters"
-          v-on:click="clearFilters"
-        />
+        <input type="reset" class="btn reset-filters" @click="clearFilters" />
       </form>
     </div>
 
     <ul class="guitar-list wrapper padded">
-      <li v-for="(gtr, index) in filteredGuitars" v-bind:key="index">
+      <li v-for="gtr in filteredGuitars" :key="gtr.modelSlug">
         <NuxtLink :to="`${gtr.brandSlug}/${gtr.modelSlug}`">
           <span>{{ gtr.name }}</span>
           <ul>
@@ -275,7 +247,7 @@
             <li v-if="gtr.scale">{{ gtr.scale }}</li>
             <li>{{ gtr.strings }}</li>
           </ul>
-          <img :src="`${gtr.img}`" :alt="`${gtr.name} image`">
+          <img :src="`${gtr.img}`" :alt="`${gtr.name} image`" />
         </NuxtLink>
       </li>
     </ul>
@@ -356,7 +328,7 @@ export default {
 
       search: "",
 
-      disabled: 0,
+      isDisabled: false,
     };
   },
 
@@ -380,11 +352,6 @@ export default {
         (this.selectedPickups = "All"),
         (this.selectedScale = "All"),
         (this.selectedStrings = "All");
-    },
-    noDefault: function (event) {
-      if (event) {
-        event.preventDefault();
-      }
     },
   },
 
@@ -420,11 +387,11 @@ export default {
         search = this.search;
       return this.guitars.filter(function (g) {
         let filtered = true;
-        if (search != "") {
-          this.disabled = 1;
+        if (search.length) {
+          this.isDisabled = true;
           filtered = g.name.toLowerCase().includes(search.toLowerCase());
         } else {
-          this.disabled = 0;
+          this.isDisabled = false;
           // BODY
           if (bodyFilter != "All") {
             filtered = g.body.material == bodyFilter;
