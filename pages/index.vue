@@ -269,6 +269,7 @@
 <script>
 import {
   guitars,
+  orderedGtrs,
   bodies,
   brands,
   bridges,
@@ -281,7 +282,6 @@ import {
   pickups,
   scales,
   strings,
-  orderedGtrs,
 } from "../assets/js/guitars.js";
 
 export default {
@@ -300,51 +300,39 @@ export default {
 
       bodies: bodies,
       selectedBody: "",
-      bodyFiltered: 0,
 
       brands: brands,
       selectedBrand: "",
-      brandFiltered: 0,
 
       bridges: bridges,
       selectedBridge: "",
-      bridgeFiltered: 0,
 
       colours: colours,
       selectedColour: "",
-      colourFiltered: 0,
 
       constructions: constructions,
       selectedConstruction: "",
-      constructionFiltered: 0,
 
       fretboards: fretboards,
       selectedFretboard: "",
-      fretboardFiltered: 0,
 
       frets: frets,
       selectedFrets: "",
-      fretsFiltered: 0,
 
       origins: origins,
       selectedOrigin: "",
-      originFiltered: 0,
 
       ownerships: ownerships,
       selectedOwnership: "",
-      ownershipFiltered: 0,
 
       pickups: pickups,
       selectedPickups: "",
-      pickupsFiltered: 0,
 
       scales: scales,
       selectedScale: "",
-      scaleFiltered: 0,
 
       strings: strings,
       selectedStrings: "",
-      stringsFiltered: 0,
 
       search: "",
 
@@ -354,7 +342,48 @@ export default {
   watch: {
     search: "filterGuitars",
   },
+  computed: {
+    bodyFiltered() {
+      return this.setFilteredState(this.selectedBody);
+    },
+    brandFiltered() {
+      return this.setFilteredState(this.selectedBrand);
+    },
+    bridgeFiltered() {
+      return this.setFilteredState(this.selectedBridge);
+    },
+    colourFiltered() {
+      return this.setFilteredState(this.selectedColour);
+    },
+    constructionFiltered() {
+      return this.setFilteredState(this.selectedConstruction);
+    },
+    fretboardFiltered() {
+      return this.setFilteredState(this.selectedFretboard);
+    },
+    fretsFiltered() {
+      return this.setFilteredState(this.selectedFrets);
+    },
+    originFiltered() {
+      return this.setFilteredState(this.selectedOrigin);
+    },
+    ownershipFiltered() {
+      return this.setFilteredState(this.selectedOwnership);
+    },
+    pickupsFiltered() {
+      return this.setFilteredState(this.selectedPickups);
+    },
+    scaleFiltered() {
+      return this.setFilteredState(this.selectedScale);
+    },
+    stringsFiltered() {
+      return this.setFilteredState(this.selectedStrings);
+    },
+  },
   methods: {
+    setFilteredState(val) {
+      return val != "All" ? true : false;
+    },
     clearFilters() {
       (this.filteredGuitars = guitars),
         (this.search = ""),
@@ -383,108 +412,72 @@ export default {
           if (this.selectedBody != "All") {
             filtered = g.body.material == this.selectedBody;
           }
-          this.selectedBody != "All"
-            ? (this.bodyFiltered = 1)
-            : (this.bodyFiltered = 0);
           // BRAND
           if (filtered) {
             if (this.selectedBrand != "All") {
               filtered = g.brand == this.selectedBrand;
             }
           }
-          this.selectedBrand != "All"
-            ? (this.brandFiltered = 1)
-            : (this.brandFiltered = 0);
           // BRIDGE
           if (filtered) {
             if (this.selectedBridge != "All") {
               filtered = g.bridge.type == this.selectedBridge;
             }
           }
-          this.selectedBridge != "All"
-            ? (this.bridgeFiltered = 1)
-            : (this.bridgeFiltered = 0);
           // COLOUR
           if (filtered) {
             if (this.selectedColour && this.selectedColour != "All") {
               filtered = g.colour.primary == this.selectedColour;
             }
           }
-          this.selectedColour != "All"
-            ? (this.colourFiltered = 1)
-            : (this.colourFiltered = 0);
           // CONSTRUCTION
           if (filtered) {
             if (this.selectedConstruction != "All") {
               filtered = g.construction.type == this.selectedConstruction;
             }
           }
-          this.selectedConstruction != "All"
-            ? (this.constructionFiltered = 1)
-            : (this.constructionFiltered = 0);
           // FRETBOARD
           if (filtered) {
             if (this.selectedFretboard != "All") {
               filtered = g.fretboard == this.selectedFretboard;
             }
           }
-          this.selectedFretboard != "All"
-            ? (this.fretboardFiltered = 1)
-            : (this.fretboardFiltered = 0);
           // FRETS
           if (filtered) {
             if (this.selectedFrets != "All") {
               filtered = g.frets == this.selectedFrets;
             }
           }
-          this.selectedFrets != "All"
-            ? (this.fretsFiltered = 1)
-            : (this.fretsFiltered = 0);
           // ORIGIN
           if (filtered) {
             if (this.selectedOrigin != "All") {
               filtered = g.origin == this.selectedOrigin;
             }
           }
-          this.selectedOrigin != "All"
-            ? (this.originFiltered = 1)
-            : (this.originFiltered = 0);
           // OWNERSHIP
           if (filtered) {
             if (this.selectedOwnership != "All") {
               filtered = g.ownership.status == this.selectedOwnership;
             }
           }
-          this.selectedOwnership != "All"
-            ? (this.ownershipFiltered = 1)
-            : (this.ownershipFiltered = 0);
           // PICKUPS
           if (filtered) {
             if (this.selectedPickups != "All") {
               filtered = g.pickups.conf == this.selectedPickups;
             }
           }
-          this.selectedPickups != "All"
-            ? (this.pickupsFiltered = 1)
-            : (this.pickupsFiltered = 0);
           // SCALE
           if (filtered) {
             if (this.selectedScale != "All") {
               filtered = g.scale == this.selectedScale;
             }
           }
-          this.selectedScale != "All"
-            ? (this.scaleFiltered = 1)
-            : (this.scaleFiltered = 0);
           // STRINGS
           if (filtered) {
             if (this.selectedStrings != "All") {
               filtered = g.strings == this.selectedStrings;
             }
           }
-          this.selectedStrings != "All"
-            ? (this.stringsFiltered = 1)
-            : (this.stringsFiltered = 0);
         }
         return filtered;
       }, this);
