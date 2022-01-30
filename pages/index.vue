@@ -247,19 +247,9 @@
       <li v-for="gtr in filteredGuitars" :key="gtr.modelSlug">
         <NuxtLink :to="`${gtr.brandSlug}/${gtr.modelSlug}`">
           <span>{{ gtr.name }}</span>
-          <ul>
-            <li>{{ gtr.bridge.name }}</li>
-            <li>{{ gtr.colour.name }}</li>
-            <li>{{ gtr.construction.type }}</li>
-            <li>{{ gtr.fretboard }}</li>
-            <li>{{ gtr.frets }}</li>
-            <li v-if="gtr.origin">{{ gtr.origin }}</li>
-            <li>{{ gtr.ownership.status }}</li>
-            <li>{{ gtr.pickups.conf }}</li>
-            <li v-if="gtr.scale">{{ gtr.scale }}</li>
-            <li>{{ gtr.strings }}</li>
-          </ul>
-          <img :src="`${gtr.img}`" :alt="`${gtr.name} image`" />
+          <picture>
+            <img :src="`${gtr.img}`" :alt="`${gtr.name} image`" />
+          </picture>
         </NuxtLink>
       </li>
     </ul>
@@ -295,8 +285,8 @@ export default {
       title: "Guitarchive",
 
       guitars: guitars,
-      orderedGtrs: orderedGtrs,
       filteredGuitars: guitars,
+      orderedGtrs: orderedGtrs,
 
       bodies: bodies,
       selectedBody: "",
@@ -427,7 +417,9 @@ export default {
           // COLOUR
           if (filtered) {
             if (this.selectedColour && this.selectedColour != "All") {
-              filtered = g.colour.primary == this.selectedColour || g.colour.secondary == this.selectedColour;
+              filtered =
+                g.colour.primary == this.selectedColour ||
+                g.colour.secondary == this.selectedColour;
             }
           }
           // CONSTRUCTION
