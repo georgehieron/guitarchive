@@ -427,7 +427,7 @@ export default {
           // COLOUR
           if (filtered) {
             if (this.selectedColour && this.selectedColour != "All") {
-              filtered = g.colour.primary == this.selectedColour;
+              filtered = g.colour.primary == this.selectedColour || g.colour.secondary == this.selectedColour;
             }
           }
           // CONSTRUCTION

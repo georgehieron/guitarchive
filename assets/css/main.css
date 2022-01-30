@@ -3,7 +3,8 @@
     --color-text: #f6e9e9;
     --color-primary: #ffff47;
     --color-shade: #1d1d1d;
-    --color-accent: #8080ff;
+    /* --color-accent: #8080ff; */
+    --color-accent: #4d8bff;
     --space: max(3vw, 1.5rem);
     --border-radius: 4px;
     --box-shadow: 0 0 0 2px;
@@ -39,7 +40,7 @@ select {
 }
 
 label[data-filtered="true"] {
-    background-image: url("~assets/img/filtered.svg");
+    background-image: url("~assets/img/icons/filtered.svg");
     background-position: top right .4em;
     background-repeat: no-repeat;
     background-size: 1.25em;
@@ -67,7 +68,7 @@ select {
 }
 
 input[type="search"] {
-    background-image: url("~assets/img/search.svg");
+    background-image: url("~assets/img/icons/search.svg");
 }
 
 .btn,
@@ -78,7 +79,7 @@ input[type="reset"] {
 }
 
 select {
-    background-image: url("~assets/img/chevron.svg");
+    background-image: url("~assets/img/icons/chevron.svg");
 }
 
 select:disabled {
@@ -259,5 +260,9 @@ ul.guitar-list > li > a:focus {
 
     .search-wrapper {
         grid-column: 2;
+    }
+
+    .reset-filters {
+        grid-column: 3;
     }
 }

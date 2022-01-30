@@ -633,6 +633,9 @@ guitars.forEach((g) => {
     if (colours.indexOf(g.colour.primary) === -1) {
         colours.push(g.colour.primary);
     }
+    if (g.colour.secondary && colours.indexOf(g.colour.secondary) === -1) {
+        colours.push(g.colour.secondary);
+    }
     if (constructions.indexOf(g.construction.type) === -1) {
         constructions.push(g.construction.type);
     }
