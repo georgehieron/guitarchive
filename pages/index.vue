@@ -16,7 +16,7 @@
               placeholder="Search..."
             />
             <datalist id="guitar-list">
-              <option v-for="gtr in guitars" :key="gtr.modelSlug">
+              <option v-for="gtr in orderedGtrs" :key="gtr.modelSlug">
                 {{ gtr.name }}
               </option>
             </datalist>
@@ -29,6 +29,7 @@
             name="body"
             id="body"
             v-model="selectedBody"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -44,6 +45,7 @@
             name="brand"
             id="brand"
             v-model="selectedBrand"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -59,6 +61,7 @@
             name="bridge"
             id="bridge"
             v-model="selectedBridge"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -78,6 +81,7 @@
             name="colour"
             id="colour"
             v-model="selectedColour"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -97,6 +101,7 @@
             name="construction"
             id="construction"
             v-model="selectedConstruction"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -116,6 +121,7 @@
             name="fretboard"
             id="fretboard"
             v-model="selectedFretboard"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -135,11 +141,12 @@
             name="frets"
             id="frets"
             v-model="selectedFrets"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
-            <option v-for="frets in frets" :value="frets" :key="frets">
-              {{ frets }}
+            <option v-for="fretNo in frets" :value="fretNo" :key="fretNo">
+              {{ fretNo }}
             </option>
           </select>
         </label>
@@ -150,6 +157,7 @@
             name="origin"
             id="origin"
             v-model="selectedOrigin"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -165,6 +173,7 @@
             name="ownership"
             id="ownership"
             v-model="selectedOwnership"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -184,6 +193,7 @@
             name="pickups"
             id="pickups"
             v-model="selectedPickups"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -203,6 +213,7 @@
             name="scale"
             id="scale"
             v-model="selectedScale"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -218,6 +229,7 @@
             name="strings"
             id="strings"
             v-model="selectedStrings"
+            @change="filterGuitars"
             :disabled="isDisabled"
           >
             <option value="All">All</option>
@@ -269,14 +281,22 @@ import {
   pickups,
   scales,
   strings,
+  orderedGtrs,
 } from "../assets/js/guitars.js";
 
 export default {
-  data: function () {
+  head() {
+    return {
+      title: this.title,
+    };
+  },
+  data() {
     return {
       title: "Guitarchive",
 
       guitars: guitars,
+      orderedGtrs: orderedGtrs,
+      filteredGuitars: guitars,
 
       bodies: bodies,
       selectedBody: "",
@@ -331,16 +351,14 @@ export default {
       isDisabled: false,
     };
   },
-
-  head() {
-    return {
-      title: this.title,
-    };
+  watch: {
+    search: "filterGuitars",
   },
-
   methods: {
-    clearFilters: function () {
-      (this.selectedBody = "All"),
+    clearFilters() {
+      (this.filteredGuitars = guitars),
+        (this.search = ""),
+        (this.selectedBody = "All"),
         (this.selectedBrand = "All"),
         (this.selectedBridge = "All"),
         (this.selectedColour = "All"),
@@ -353,8 +371,127 @@ export default {
         (this.selectedScale = "All"),
         (this.selectedStrings = "All");
     },
-  },
+    filterGuitars() {
+      const filteredGtrs = this.guitars.filter(function (g) {
+        let filtered = true;
+        if (this.search.length) {
+          this.isDisabled = true;
+          filtered = g.name.toLowerCase().includes(this.search.toLowerCase());
+        } else {
+          this.isDisabled = false;
+          // BODY
+          if (this.selectedBody != "All") {
+            filtered = g.body.material == this.selectedBody;
+          }
+          this.selectedBody != "All"
+            ? (this.bodyFiltered = 1)
+            : (this.bodyFiltered = 0);
+          // BRAND
+          if (filtered) {
+            if (this.selectedBrand != "All") {
+              filtered = g.brand == this.selectedBrand;
+            }
+          }
+          this.selectedBrand != "All"
+            ? (this.brandFiltered = 1)
+            : (this.brandFiltered = 0);
+          // BRIDGE
+          if (filtered) {
+            if (this.selectedBridge != "All") {
+              filtered = g.bridge.type == this.selectedBridge;
+            }
+          }
+          this.selectedBridge != "All"
+            ? (this.bridgeFiltered = 1)
+            : (this.bridgeFiltered = 0);
+          // COLOUR
+          if (filtered) {
+            if (this.selectedColour && this.selectedColour != "All") {
+              filtered = g.colour.primary == this.selectedColour;
+            }
+          }
+          this.selectedColour != "All"
+            ? (this.colourFiltered = 1)
+            : (this.colourFiltered = 0);
+          // CONSTRUCTION
+          if (filtered) {
+            if (this.selectedConstruction != "All") {
+              filtered = g.construction.type == this.selectedConstruction;
+            }
+          }
+          this.selectedConstruction != "All"
+            ? (this.constructionFiltered = 1)
+            : (this.constructionFiltered = 0);
+          // FRETBOARD
+          if (filtered) {
+            if (this.selectedFretboard != "All") {
+              filtered = g.fretboard == this.selectedFretboard;
+            }
+          }
+          this.selectedFretboard != "All"
+            ? (this.fretboardFiltered = 1)
+            : (this.fretboardFiltered = 0);
+          // FRETS
+          if (filtered) {
+            if (this.selectedFrets != "All") {
+              filtered = g.frets == this.selectedFrets;
+            }
+          }
+          this.selectedFrets != "All"
+            ? (this.fretsFiltered = 1)
+            : (this.fretsFiltered = 0);
+          // ORIGIN
+          if (filtered) {
+            if (this.selectedOrigin != "All") {
+              filtered = g.origin == this.selectedOrigin;
+            }
+          }
+          this.selectedOrigin != "All"
+            ? (this.originFiltered = 1)
+            : (this.originFiltered = 0);
+          // OWNERSHIP
+          if (filtered) {
+            if (this.selectedOwnership != "All") {
+              filtered = g.ownership.status == this.selectedOwnership;
+            }
+          }
+          this.selectedOwnership != "All"
+            ? (this.ownershipFiltered = 1)
+            : (this.ownershipFiltered = 0);
+          // PICKUPS
+          if (filtered) {
+            if (this.selectedPickups != "All") {
+              filtered = g.pickups.conf == this.selectedPickups;
+            }
+          }
+          this.selectedPickups != "All"
+            ? (this.pickupsFiltered = 1)
+            : (this.pickupsFiltered = 0);
+          // SCALE
+          if (filtered) {
+            if (this.selectedScale != "All") {
+              filtered = g.scale == this.selectedScale;
+            }
+          }
+          this.selectedScale != "All"
+            ? (this.scaleFiltered = 1)
+            : (this.scaleFiltered = 0);
+          // STRINGS
+          if (filtered) {
+            if (this.selectedStrings != "All") {
+              filtered = g.strings == this.selectedStrings;
+            }
+          }
+          this.selectedStrings != "All"
+            ? (this.stringsFiltered = 1)
+            : (this.stringsFiltered = 0);
+        }
+        return filtered;
+      }, this);
 
+      return (this.filteredGuitars = filteredGtrs);
+    },
+  },
   mounted: function () {
     this.selectedBody = "All";
     this.selectedBrand = "All";
@@ -368,139 +505,6 @@ export default {
     this.selectedPickups = "All";
     this.selectedScale = "All";
     this.selectedStrings = "All";
-  },
-
-  computed: {
-    filteredGuitars: function () {
-      let bodyFilter = this.selectedBody,
-        brandFilter = this.selectedBrand,
-        bridgeFilter = this.selectedBridge,
-        colourFilter = this.selectedColour,
-        constructionFilter = this.selectedConstruction,
-        fretboardFilter = this.selectedFretboard,
-        fretsFilter = this.selectedFrets,
-        originFilter = this.selectedOrigin,
-        ownershipFilter = this.selectedOwnership,
-        pickupsFilter = this.selectedPickups,
-        scaleFilter = this.selectedScale,
-        stringsFilter = this.selectedStrings,
-        search = this.search;
-      return this.guitars.filter(function (g) {
-        let filtered = true;
-        if (search.length) {
-          this.isDisabled = true;
-          filtered = g.name.toLowerCase().includes(search.toLowerCase());
-        } else {
-          this.isDisabled = false;
-          // BODY
-          if (bodyFilter != "All") {
-            filtered = g.body.material == bodyFilter;
-          }
-          bodyFilter != "All"
-            ? (this.bodyFiltered = 1)
-            : (this.bodyFiltered = 0);
-          // BRAND
-          if (filtered) {
-            if (brandFilter != "All") {
-              filtered = g.brand == brandFilter;
-            }
-          }
-          brandFilter != "All"
-            ? (this.brandFiltered = 1)
-            : (this.brandFiltered = 0);
-          // BRIDGE
-          if (filtered) {
-            if (bridgeFilter != "All") {
-              filtered = g.bridge.type == bridgeFilter;
-            }
-          }
-          bridgeFilter != "All"
-            ? (this.bridgeFiltered = 1)
-            : (this.bridgeFiltered = 0);
-          // COLOUR
-          if (filtered) {
-            if (colourFilter && colourFilter != "All") {
-              filtered = g.colour.primary == colourFilter;
-            }
-          }
-          colourFilter != "All"
-            ? (this.colourFiltered = 1)
-            : (this.colourFiltered = 0);
-          // CONSTRUCTION
-          if (filtered) {
-            if (constructionFilter != "All") {
-              filtered = g.construction.type == constructionFilter;
-            }
-          }
-          constructionFilter != "All"
-            ? (this.constructionFiltered = 1)
-            : (this.constructionFiltered = 0);
-          // FRETBOARD
-          if (filtered) {
-            this.fretboardFiltered = 0;
-            if (fretboardFilter != "All") {
-              filtered = g.fretboard == fretboardFilter;
-              this.fretboardFiltered = 1;
-            }
-          }
-          // FRETS
-          if (filtered) {
-            if (fretsFilter != "All") {
-              filtered = g.frets == fretsFilter;
-            }
-          }
-          fretsFilter != "All"
-            ? (this.fretsFiltered = 1)
-            : (this.fretsFiltered = 0);
-          // ORIGIN
-          if (filtered) {
-            if (originFilter != "All") {
-              filtered = g.origin == originFilter;
-            }
-          }
-          originFilter != "All"
-            ? (this.originFiltered = 1)
-            : (this.originFiltered = 0);
-          // OWNERSHIP
-          if (filtered) {
-            if (ownershipFilter != "All") {
-              filtered = g.ownership.status == ownershipFilter;
-            }
-          }
-          ownershipFilter != "All"
-            ? (this.ownershipFiltered = 1)
-            : (this.ownershipFiltered = 0);
-          // PICKUPS
-          if (filtered) {
-            if (pickupsFilter != "All") {
-              filtered = g.pickups.conf == pickupsFilter;
-            }
-          }
-          pickupsFilter != "All"
-            ? (this.pickupsFiltered = 1)
-            : (this.pickupsFiltered = 0);
-          // SCALE
-          if (filtered) {
-            if (scaleFilter != "All") {
-              filtered = g.scale == scaleFilter;
-            }
-          }
-          scaleFilter != "All"
-            ? (this.scaleFiltered = 1)
-            : (this.scaleFiltered = 0);
-          // STRINGS
-          if (filtered) {
-            if (stringsFilter != "All") {
-              filtered = g.strings == stringsFilter;
-            }
-          }
-          stringsFilter != "All"
-            ? (this.stringsFiltered = 1)
-            : (this.stringsFiltered = 0);
-        }
-        return filtered;
-      }, this);
-    },
   },
 };
 </script>
