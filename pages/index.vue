@@ -385,6 +385,7 @@ ul.guitar-list > li > a:focus:before {
 }
 
 ul.guitar-list > li > a > span {
+  flex: 1 0 auto;
   padding: 1rem;
   background-color: var(--color-shade);
 }
