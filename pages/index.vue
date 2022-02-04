@@ -371,6 +371,20 @@ ul.guitar-list > li > a:before {
   transition: var(--transition) top, var(--transition) right;
 }
 
+ul.guitar-list > li > a:after {
+  content: "";
+  position: absolute;
+  bottom: -0.85rem;
+  left: -0.85rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: var(--color-primary);
+  opacity: .075;
+  transition: var(--transition) bottom, var(--transition) left, var(--transition) background-color, var(--transition) opacity;
+}
+
 ul.guitar-list > li > a:hover,
 ul.guitar-list > li > a:focus {
   border-color: var(--color-accent);
@@ -384,14 +398,29 @@ ul.guitar-list > li > a:focus:before {
   background-image: radial-gradient(var(--color-text) 15%, transparent 30%);
 }
 
+ul.guitar-list > li > a:hover:after,
+ul.guitar-list > li > a:focus:after {
+  bottom: -0.6rem;
+  left: -0.6rem;
+  background-color: var(--color-accent);
+  opacity: .3;
+}
+
 ul.guitar-list > li > a > span {
   flex: 1 0 auto;
   padding: 1rem;
   background-color: var(--color-shade);
 }
 
+ul.guitar-list > li > a > picture {
+    flex: 0 0 auto;
+    aspect-ratio: 2/1;
+    overflow: hidden;
+}
+
 ul.guitar-list > li > a > picture > img {
-  aspect-ratio: 2/1;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
