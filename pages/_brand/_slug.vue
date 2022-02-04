@@ -8,7 +8,10 @@
         <table class="guitar-info">
           <tr>
             <th scope="row">Body:</th>
-            <td>{{ this.body.material }}<span v-if="this.body.detail">, {{ this.body.detail}}</span></td>
+            <td>
+              {{ this.body.material
+              }}<span v-if="this.body.detail">, {{ this.body.detail }}</span>
+            </td>
           </tr>
           <tr>
             <th scope="row">Bridge:</th>
@@ -89,13 +92,70 @@
         </table>
       </div>
     </div>
-    <div
+    <!-- <div
       class="guitar-img"
       :style="{ backgroundImage: `url(${this.img})` }"
-    >
-    </div>
+    ></div> -->
+    <div
+      class="guitar-img"
+      :style="{ backgroundImage: `url(https://www.levytukku.fi/images/products/rg550-dy-00-03_orig.png)` }"
+    ></div>
   </div>
 </template>
+
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table tr {
+  vertical-align: top;
+  padding-top: 0.5em;
+}
+
+table tr + tr {
+  border-top: 1px solid var(--color-primary);
+}
+
+table th,
+table td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+table th {
+  padding-left: 0.5em;
+  padding-right: 0.75em;
+  text-align: right;
+}
+
+table td {
+  padding-left: 0.75em;
+  padding-right: 0.5em;
+  border-left: 1px solid var(--color-primary);
+}
+
+.guitar-single {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 100vh;
+}
+
+.guitar-info {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guitar-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+</style>
 
 <script>
 import { guitars } from "../../assets/js/guitars.js";

@@ -248,13 +248,186 @@
         <NuxtLink :to="`${gtr.brandSlug}/${gtr.modelSlug}`">
           <span>{{ gtr.name }}</span>
           <picture>
-            <img :src="`${gtr.img}`" :alt="`${gtr.name} image`" />
+            <!-- <img :src="`${gtr.img}`" :alt="`${gtr.name} image`" /> -->
+            <img
+              :src="`https://www.levytukku.fi/images/products/rg550-dy-00-03-cu-body-top_orig.jpg`"
+              :alt="`${gtr.name} image`"
+            />
           </picture>
         </NuxtLink>
       </li>
     </ul>
   </main>
 </template>
+
+<style>
+label[data-filtered="true"] {
+  background-image: url("~assets/img/icons/filtered.svg");
+  background-position: top right 0.4em;
+  background-repeat: no-repeat;
+  background-size: 1.25em;
+}
+
+label[data-filtered="true"] select {
+  background-color: var(--color-shade);
+  box-shadow: var(--box-shadow) var(--color-accent);
+}
+
+input,
+select {
+  appearance: none;
+  padding-left: 0.5em;
+  padding-right: 2em;
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  background-color: var(--color-base);
+  background-position: center right 0.25em;
+  background-repeat: no-repeat;
+  background-size: 1.25em;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type="search"] {
+  background-image: url("~assets/img/icons/search.svg");
+}
+
+.btn,
+button,
+select,
+input[type="reset"] {
+  cursor: pointer;
+}
+
+select {
+  background-image: url("~assets/img/icons/chevron.svg");
+}
+
+select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+label > input,
+label > select {
+  display: block;
+  width: 100%;
+}
+
+.guitar-filter-wrap {
+  background-color: var(--color-shade);
+}
+
+form.guitar-filter,
+ul.guitar-list {
+  display: grid;
+  grid-column-gap: max(3vw, 1.5rem);
+  margin-right: auto;
+  margin-bottom: max(3vw, 1.5rem);
+  margin-left: auto;
+}
+
+.guitar-filter {
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 1rem;
+  align-items: end;
+}
+
+ul.guitar-list {
+  grid-template-columns: 1fr;
+  grid-row-gap: var(--space);
+  align-items: stretch;
+  padding: calc(var(--space) / 2) var(--space);
+}
+
+/* ul.guitar-list > li {
+  background-color: var(--color-shade);
+} */
+
+ul.guitar-list > li > a {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  border: 2px solid var(--color-primary);
+  transition: var(--transition) box-shadow, var(--transition) color,
+    var(--transition) border-color;
+}
+
+ul.guitar-list > li > a:before {
+  content: "";
+  position: absolute;
+  top: -0.85rem;
+  right: -0.85rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: radial-gradient(var(--color-primary) 15%, transparent 30%);
+  background-color: transparent;
+  background-position: 0 0, 0.35rem 0.35rem;
+  background-size: 0.35rem 0.35rem;
+  transition: var(--transition) top, var(--transition) right;
+}
+
+ul.guitar-list > li > a:hover,
+ul.guitar-list > li > a:focus {
+  border-color: var(--color-accent);
+  box-shadow: var(--box-shadow) var(--color-accent);
+}
+
+ul.guitar-list > li > a:hover:before,
+ul.guitar-list > li > a:focus:before {
+  top: -0.6rem;
+  right: -0.6rem;
+  background-image: radial-gradient(var(--color-text) 15%, transparent 30%);
+}
+
+ul.guitar-list > li > a > span {
+  padding: 1rem;
+  background-color: var(--color-shade);
+}
+
+ul.guitar-list > li > a > picture > img {
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+
+.search-wrapper {
+  grid-column: 1/3;
+}
+
+.search-wrapper + label {
+  grid-column: 1;
+}
+
+.reset-filters {
+  grid-column: 2;
+  margin-top: calc(var(--space) / 2);
+}
+
+@media screen and (min-width: 36rem) {
+  ul.guitar-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .guitar-filter,
+  ul.guitar-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .search-wrapper {
+    grid-column: 2;
+  }
+
+  .reset-filters {
+    grid-column: 3;
+  }
+}
+</style>
 
 <script>
 import {

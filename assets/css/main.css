@@ -5,8 +5,9 @@
     --color-shade: #1d1d1d;
     --color-accent: #4d8bff;
     --space: max(3vw, 1.5rem);
-    --border-radius: 4px;
-    --box-shadow: 0 0 0 2px;
+    --border-radius: .25rem;
+    --border-radius: 0;
+    --box-shadow: 0 0 0 .125rem;
     --transition: .25s ease;
 }
 
@@ -36,60 +37,6 @@ body,
 input,
 select {
     color: var(--color-text);
-}
-
-label[data-filtered="true"] {
-    background-image: url("~assets/img/icons/filtered.svg");
-    background-position: top right .4em;
-    background-repeat: no-repeat;
-    background-size: 1.25em;
-}
-
-label[data-filtered="true"] select {
-    background-color: var(--color-shade);
-    box-shadow: var(--box-shadow) var(--color-accent);
-}
-
-input,
-select {
-    appearance: none;
-    padding-left: .5em;
-    padding-right: 2em;
-    border: 2px solid var(--color-text);
-    border-radius: var(--border-radius);
-    background-color: var(--color-base);
-    background-position: center right .25em;
-    background-repeat: no-repeat;
-    background-size: 1.25em;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-input[type="search"] {
-    background-image: url("~assets/img/icons/search.svg");
-}
-
-.btn,
-button,
-select,
-input[type="reset"] {
-    cursor: pointer;
-}
-
-select {
-    background-image: url("~assets/img/icons/chevron.svg");
-}
-
-select:disabled {
-    opacity: .4;
-    cursor: not-allowed;
-}
-
-label > input,
-label > select {
-    display: block;
-    width: 100%;
 }
 
 a {
@@ -126,37 +73,6 @@ button:focus,
     border-color: var(--color-accent);
 }
 
-table {
-    border-collapse: collapse;
-}
-
-table tr {
-    vertical-align: top;
-    padding-top: .5em;
-}
-
-table tr + tr {
-    border-top: 1px solid var(--color-primary);
-}
-
-table th,
-table td {
-    padding-top: .5em;
-    padding-bottom: .5em;
-}
-
-table th {
-    padding-left: .5em;
-    padding-right: .75em;
-    text-align: right;
-}
-
-table td {
-    padding-left: .75em;
-    padding-right: .5em;
-    border-left: 1px solid var(--color-primary);
-}
-
 .wrapper {
     max-width: 90rem;
     margin-left: auto;
@@ -165,103 +81,4 @@ table td {
 
 .padded {
     padding: calc(var(--space)/2) var(--space);
-}
-
-.guitar-filter-wrap {
-    background-color: var(--color-shade);
-}
-
-form.guitar-filter,
-ul.guitar-list {
-    display: grid;
-    grid-column-gap: max(3vw, 1.5rem);
-    margin-right: auto;
-    margin-bottom: max(3vw, 1.5rem);
-    margin-left: auto;
-}
-
-.guitar-filter {
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 1rem;
-    align-items: end;
-}
-
-ul.guitar-list {
-    grid-template-columns: 1fr;
-    grid-row-gap: var(--space);
-    align-items: stretch;
-    padding: calc(var(--space)/2) var(--space);
-}
-
-ul.guitar-list > li {
-    background-color: var(--color-shade);
-}
-
-ul.guitar-list > li > a {
-    display: block;
-    height: 100%;
-    padding: 1rem;
-    border: 1px solid var(--color-primary);
-    border-radius: var(--border-radius);
-    transition: var(--transition) box-shadow, var(--transition) color;
-}
-
-ul.guitar-list > li > a:hover,
-ul.guitar-list > li > a:focus {
-    box-shadow: var(--box-shadow) var(--color-accent);
-}
-
-.search-wrapper {
-    grid-column: 1/3;
-}
-
-.search-wrapper + label {
-    grid-column: 1;
-}
-
-.reset-filters {
-    grid-column: 2;
-    margin-top: calc(var(--space)/2);
-}
-
-.guitar-single {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    min-height: 100vh;
-}
-
-.guitar-info {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.guitar-img {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-position: top right;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-@media screen and (min-width: 36rem) {
-    ul.guitar-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (min-width: 48rem) {
-    .guitar-filter,
-    ul.guitar-list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .search-wrapper {
-        grid-column: 2;
-    }
-
-    .reset-filters {
-        grid-column: 3;
-    }
 }

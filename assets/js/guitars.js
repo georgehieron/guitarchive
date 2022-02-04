@@ -538,7 +538,7 @@ const guitars = [
         },
         fretboard: "Rosewood",
         frets: "24",
-        img: '/_nuxt/assets/img/jackson-1994-95-fusion-ex.jpg',
+        img: '',
         neck: {
             material: "Eastern Maple",
             pcs: "1",
