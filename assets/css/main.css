@@ -3,16 +3,15 @@
     --color-text: #f6e9e9;
     --color-primary: #ffff47;
     --color-shade: #1d1d1d;
-    --color-accent: #5F8CF0;
-    --space: max(3vw, 1.5rem);
-    --border-radius: .25rem;
+    --color-accent: #5f8cf0;
+    --space: max(3vw, 2rem);
     --border-radius: 0;
     --box-shadow: 0 0 0 .125rem;
     --transition: .25s ease;
 }
 
-:focus {
-    outline: .2rem dotted var(--color-primary);
+:focus-visible {
+    outline: .125rem dotted var(--color-primary);
     outline-offset: .1rem;
 }
 
@@ -26,11 +25,18 @@ body {
     color: var(--color-text);
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-weight: 400;
+    letter-spacing: 0.05ch;
 }
 
 h1 {
+    display: block;
+    width: 100%;
+    letter-spacing: clamp(0px, 1vw, .625rem);
+    font-size: clamp(1.9rem, 3.8vw, 3.4rem);
     text-align: center;
     text-transform: uppercase;
+    border-top: .0625rem solid;
+    border-bottom: .0625rem solid;
 }
 
 body,
@@ -66,9 +72,9 @@ button:active,
 }
 
 button:hover,
-button:focus,
+button:focus-visible,
 .btn:hover,
-.btn:focus {
+.btn:focus-visible {
     background-color: var(--color-accent);
     border-color: var(--color-accent);
 }
