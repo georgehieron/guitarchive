@@ -1,246 +1,252 @@
 <template>
-  <main>
-    <div class="wrapper padded">
-      <h1>{{ this.title }}</h1>
-    </div>
-    <div class="guitar-filter-wrap">
-      <form class="guitar-filter wrapper padded">
-        <div class="search-wrapper">
-          <label
-            >Search brand/model:
-            <input
-              type="search"
-              list="guitar-list"
-              v-model="search"
-              @keydown.enter.prevent
-              placeholder="Search..."
-            />
-            <datalist id="guitar-list">
-              <option v-for="gtr in orderedGtrs" :key="gtr.modelSlug">
-                {{ gtr.name }}
+  <main class="guitarchive">
+    <div class="title-filter-wrap wrapper">
+      <div class="padded">
+        <h1>{{ this.title }}</h1>
+      </div>
+      <div class="guitar-filter-wrap">
+        <form class="guitar-filter wrapper padded">
+          <div class="search-wrapper">
+            <label
+              >Search brand/model:
+              <input
+                type="search"
+                list="guitar-list"
+                v-model="search"
+                @keydown.enter.prevent
+                placeholder="Search..."
+              />
+              <datalist id="guitar-list">
+                <option v-for="gtr in orderedGtrs" :key="gtr.modelSlug">
+                  {{ gtr.name }}
+                </option>
+              </datalist>
+            </label>
+          </div>
+
+          <label :data-filtered="bodyFiltered"
+            >Body material
+            <select
+              name="body"
+              id="body"
+              v-model="selectedBody"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option v-for="body in bodies" :value="body" :key="body.material">
+                {{ body }}
               </option>
-            </datalist>
+            </select>
           </label>
-        </div>
 
-        <label :data-filtered="bodyFiltered"
-          >Body material
-          <select
-            name="body"
-            id="body"
-            v-model="selectedBody"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="body in bodies" :value="body" :key="body.material">
-              {{ body }}
-            </option>
-          </select>
-        </label>
-
-        <label :data-filtered="brandFiltered"
-          >Brand
-          <select
-            name="brand"
-            id="brand"
-            v-model="selectedBrand"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="brand in brands" :value="brand" :key="brand">
-              {{ brand }}
-            </option>
-          </select>
-        </label>
-
-        <label :data-filtered="bridgeFiltered"
-          >Bridge type
-          <select
-            name="bridge"
-            id="bridge"
-            v-model="selectedBridge"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="bridge in bridges"
-              :value="bridge"
-              :key="bridge.type"
+          <label :data-filtered="brandFiltered"
+            >Brand
+            <select
+              name="brand"
+              id="brand"
+              v-model="selectedBrand"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ bridge }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option v-for="brand in brands" :value="brand" :key="brand">
+                {{ brand }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="colourFiltered"
-          >Colour
-          <select
-            name="colour"
-            id="colour"
-            v-model="selectedColour"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="colour in colours"
-              :value="colour"
-              :key="colour.primary"
+          <label :data-filtered="bridgeFiltered"
+            >Bridge type
+            <select
+              name="bridge"
+              id="bridge"
+              v-model="selectedBridge"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ colour }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option
+                v-for="bridge in bridges"
+                :value="bridge"
+                :key="bridge.type"
+              >
+                {{ bridge }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="constructionFiltered"
-          >Construction
-          <select
-            name="construction"
-            id="construction"
-            v-model="selectedConstruction"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="construction in constructions"
-              :value="construction"
-              :key="construction.type"
+          <label :data-filtered="colourFiltered"
+            >Colour
+            <select
+              name="colour"
+              id="colour"
+              v-model="selectedColour"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ construction }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option
+                v-for="colour in colours"
+                :value="colour"
+                :key="colour.primary"
+              >
+                {{ colour }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="fretboardFiltered"
-          >Fretboard
-          <select
-            name="fretboard"
-            id="fretboard"
-            v-model="selectedFretboard"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="fretboard in fretboards"
-              :value="fretboard"
-              :key="fretboard"
+          <label :data-filtered="constructionFiltered"
+            >Construction
+            <select
+              name="construction"
+              id="construction"
+              v-model="selectedConstruction"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ fretboard }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option
+                v-for="construction in constructions"
+                :value="construction"
+                :key="construction.type"
+              >
+                {{ construction }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="fretsFiltered"
-          >Frets
-          <select
-            name="frets"
-            id="frets"
-            v-model="selectedFrets"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="fretNo in frets" :value="fretNo" :key="fretNo">
-              {{ fretNo }}
-            </option>
-          </select>
-        </label>
-
-        <label :data-filtered="originFiltered"
-          >Origin
-          <select
-            name="origin"
-            id="origin"
-            v-model="selectedOrigin"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="origin in origins" :value="origin" :key="origin">
-              {{ origin }}
-            </option>
-          </select>
-        </label>
-
-        <label :data-filtered="ownershipFiltered"
-          >Ownership
-          <select
-            name="ownership"
-            id="ownership"
-            v-model="selectedOwnership"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="ownership in ownerships"
-              :value="ownership"
-              :key="ownership.status"
+          <label :data-filtered="fretboardFiltered"
+            >Fretboard
+            <select
+              name="fretboard"
+              id="fretboard"
+              v-model="selectedFretboard"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ ownership }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option
+                v-for="fretboard in fretboards"
+                :value="fretboard"
+                :key="fretboard"
+              >
+                {{ fretboard }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="pickupsFiltered"
-          >Pickup config.
-          <select
-            name="pickups"
-            id="pickups"
-            v-model="selectedPickups"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option
-              v-for="pickups in pickups"
-              :value="pickups"
-              :key="pickups.conf"
+          <label :data-filtered="fretsFiltered"
+            >Frets
+            <select
+              name="frets"
+              id="frets"
+              v-model="selectedFrets"
+              @change="filterGuitars"
+              :disabled="isDisabled"
             >
-              {{ pickups }}
-            </option>
-          </select>
-        </label>
+              <option value="All">All</option>
+              <option v-for="fretNo in frets" :value="fretNo" :key="fretNo">
+                {{ fretNo }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="scaleFiltered"
-          >Scale length
-          <select
-            name="scale"
-            id="scale"
-            v-model="selectedScale"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="scale in scales" :value="scale" :key="scale">
-              {{ scale }}
-            </option>
-          </select>
-        </label>
+          <label :data-filtered="originFiltered"
+            >Origin
+            <select
+              name="origin"
+              id="origin"
+              v-model="selectedOrigin"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option v-for="origin in origins" :value="origin" :key="origin">
+                {{ origin }}
+              </option>
+            </select>
+          </label>
 
-        <label :data-filtered="stringsFiltered"
-          >Strings
-          <select
-            name="strings"
-            id="strings"
-            v-model="selectedStrings"
-            @change="filterGuitars"
-            :disabled="isDisabled"
-          >
-            <option value="All">All</option>
-            <option v-for="strings in strings" :value="strings" :key="strings">
-              {{ strings }}
-            </option>
-          </select>
-        </label>
+          <label :data-filtered="ownershipFiltered"
+            >Ownership
+            <select
+              name="ownership"
+              id="ownership"
+              v-model="selectedOwnership"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option
+                v-for="ownership in ownerships"
+                :value="ownership"
+                :key="ownership.status"
+              >
+                {{ ownership }}
+              </option>
+            </select>
+          </label>
 
-        <input type="reset" class="btn reset-filters" @click="clearFilters" />
-      </form>
+          <label :data-filtered="pickupsFiltered"
+            >Pickup config.
+            <select
+              name="pickups"
+              id="pickups"
+              v-model="selectedPickups"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option
+                v-for="pickups in pickups"
+                :value="pickups"
+                :key="pickups.conf"
+              >
+                {{ pickups }}
+              </option>
+            </select>
+          </label>
+
+          <label :data-filtered="scaleFiltered"
+            >Scale length
+            <select
+              name="scale"
+              id="scale"
+              v-model="selectedScale"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option v-for="scale in scales" :value="scale" :key="scale">
+                {{ scale }}
+              </option>
+            </select>
+          </label>
+
+          <label :data-filtered="stringsFiltered"
+            >Strings
+            <select
+              name="strings"
+              id="strings"
+              v-model="selectedStrings"
+              @change="filterGuitars"
+              :disabled="isDisabled"
+            >
+              <option value="All">All</option>
+              <option
+                v-for="strings in strings"
+                :value="strings"
+                :key="strings"
+              >
+                {{ strings }}
+              </option>
+            </select>
+          </label>
+
+          <input type="reset" class="btn reset-filters" @click="clearFilters" />
+        </form>
+      </div>
     </div>
 
     <ul class="guitar-list wrapper padded">
@@ -261,6 +267,11 @@
 </template>
 
 <style>
+.title-filter-wrap {
+    width: 100%;
+    background-color: var(--color-shade);
+}
+
 label[data-filtered="true"] {
   background-image: url("~assets/img/icons/filtered.svg");
   background-position: top right 0.4em;
@@ -278,7 +289,7 @@ select {
   appearance: none;
   padding-left: 0.5em;
   padding-right: 2em;
-  border: 2px solid var(--color-text);
+  border: 0.125rem solid var(--color-text);
   border-radius: var(--border-radius);
   background-color: var(--color-base);
   background-position: center right 0.25em;
@@ -315,42 +326,36 @@ label > select {
   width: 100%;
 }
 
-.guitar-filter-wrap {
-  background-color: var(--color-shade);
-}
-
 form.guitar-filter,
 ul.guitar-list {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   grid-column-gap: max(3vw, 1.5rem);
-  margin-right: auto;
-  margin-bottom: max(3vw, 1.5rem);
-  margin-left: auto;
+  margin: max(3vw, 1.5rem) auto;
 }
 
 .guitar-filter {
-  grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 1rem;
   align-items: end;
 }
 
 ul.guitar-list {
-  grid-template-columns: 1fr;
   grid-row-gap: var(--space);
+  height: max-content;
   align-items: stretch;
   padding: calc(var(--space) / 2) var(--space);
 }
 
-/* ul.guitar-list > li {
+ul.guitar-list > li {
   background-color: var(--color-shade);
-} */
+}
 
 ul.guitar-list > li > a {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
-  border: 2px solid var(--color-primary);
+  border: 0.125rem solid var(--color-text);
   transition: var(--transition) box-shadow, var(--transition) color,
     var(--transition) border-color;
 }
@@ -364,7 +369,7 @@ ul.guitar-list > li > a:before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: radial-gradient(var(--color-primary) 15%, transparent 30%);
+  background-image: radial-gradient(var(--color-text) 15%, transparent 30%);
   background-color: transparent;
   background-position: 0 0, 0.35rem 0.35rem;
   background-size: 0.35rem 0.35rem;
@@ -380,9 +385,10 @@ ul.guitar-list > li > a:after {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: var(--color-primary);
-  opacity: .075;
-  transition: var(--transition) bottom, var(--transition) left, var(--transition) background-color, var(--transition) opacity;
+  background-color: var(--color-text);
+  opacity: 0.075;
+  transition: var(--transition) bottom, var(--transition) left,
+    var(--transition) background-color, var(--transition) opacity;
 }
 
 ul.guitar-list > li > a:hover,
@@ -395,7 +401,6 @@ ul.guitar-list > li > a:hover:before,
 ul.guitar-list > li > a:focus:before {
   top: -0.6rem;
   right: -0.6rem;
-  background-image: radial-gradient(var(--color-text) 15%, transparent 30%);
 }
 
 ul.guitar-list > li > a:hover:after,
@@ -403,19 +408,18 @@ ul.guitar-list > li > a:focus:after {
   bottom: -0.6rem;
   left: -0.6rem;
   background-color: var(--color-accent);
-  opacity: .3;
+  opacity: 0.3;
 }
 
 ul.guitar-list > li > a > span {
   flex: 1 0 auto;
   padding: 1rem;
-  background-color: var(--color-shade);
 }
 
 ul.guitar-list > li > a > picture {
-    flex: 0 0 auto;
-    aspect-ratio: 2/1;
-    overflow: hidden;
+  flex: 0 0 auto;
+  aspect-ratio: 2/1;
+  overflow: hidden;
 }
 
 ul.guitar-list > li > a > picture > img {
@@ -438,23 +442,31 @@ ul.guitar-list > li > a > picture > img {
 }
 
 @media screen and (min-width: 36rem) {
-  ul.guitar-list {
-    grid-template-columns: repeat(2, 1fr);
+  .guitarchive {
+    display: grid;
+    grid-template-columns: minmax(24rem, 1fr) 1fr;
   }
 }
 
 @media screen and (min-width: 48rem) {
-  .guitar-filter,
-  ul.guitar-list {
-    grid-template-columns: repeat(3, 1fr);
+  .guitarchive {
+    grid-template-columns: minmax(20rem, 1fr) repeat(4, 1fr);
+  }
+
+  .guitarchive > .title-filter-wrap {
+    grid-column: 1/3;
+  }
+
+  .guitarchive > .guitar-list {
+    grid-column: 3/6;
   }
 
   .search-wrapper {
-    grid-column: 2;
+    grid-column: 1/3;
   }
 
   .reset-filters {
-    grid-column: 3;
+    grid-column: 2;
   }
 }
 </style>
