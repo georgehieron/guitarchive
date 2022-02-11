@@ -6,13 +6,13 @@
     --color-accent: #5f8cf0;
     --space: max(3vw, 2rem);
     --border-radius: 0;
-    --box-shadow: 0 0 0 .125rem;
-    --transition: .25s ease;
+    --box-shadow: 0 0 0 0.125rem;
+    --transition: 0.25s ease;
 }
 
 :focus-visible {
-    outline: .125rem dotted var(--color-primary);
-    outline-offset: .1rem;
+    outline: 0.125rem dotted var(--color-primary);
+    outline-offset: 0.1rem;
 }
 
 ::selection {
@@ -31,12 +31,12 @@ body {
 h1 {
     display: block;
     width: 100%;
-    letter-spacing: clamp(0px, 1vw, .625rem);
+    letter-spacing: clamp(0px, 1vw, 0.625rem);
     font-size: clamp(1.9rem, 3.8vw, 3.4rem);
     text-align: center;
     text-transform: uppercase;
-    border-top: .0625rem solid;
-    border-bottom: .0625rem solid;
+    border-top: 0.0625rem solid;
+    border-bottom: 0.0625rem solid;
 }
 
 body,
@@ -61,14 +61,14 @@ button,
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     font-size: 1.1em;
-    letter-spacing: .25ch;
-    padding: .25em 1em;
+    letter-spacing: 0.25ch;
+    padding: 0.25em 1em;
     text-transform: uppercase;
 }
 
 button:active,
 .btn:active {
-    opacity: .9;
+    opacity: 0.9;
 }
 
 button:hover,
@@ -79,6 +79,15 @@ button:focus-visible,
     border-color: var(--color-accent);
 }
 
+.image--notfound {
+    background-color: var(--color-primary) !important;
+}
+
+.image--notfound:before,
+.image--notfound img:before {
+    color: var(--color-shade) !important;
+}
+
 .wrapper {
     max-width: 90rem;
     margin-left: auto;
@@ -86,5 +95,5 @@ button:focus-visible,
 }
 
 .padded {
-    padding: calc(var(--space)/2) var(--space);
+    padding: calc(var(--space) / 2) var(--space);
 }
