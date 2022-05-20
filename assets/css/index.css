@@ -4,6 +4,11 @@
     outline: .0625rem solid;
 }
 
+.title-wrap {
+    background-image: url('~assets/img/icons/diagonal-lines.svg');
+    background-size: 1.25em;
+}
+
 label[data-filtered="true"] {
     background-image: url("~assets/img/icons/filtered.svg");
     background-position: top right .4em;
@@ -107,7 +112,7 @@ ul.guitar-list > li > a:before {
     background-color: transparent;
     background-position: 0 0, .5rem .5rem;
     background-size: .5rem .5rem;
-    background-image: url('../img/icons/diagonal-lines.svg');
+    background-image: url('~assets/img/icons/diagonal-lines.svg');
     filter: grayscale(0);
     transition: var(--transition) top, var(--transition) left, var(--transition) filter;
 }
@@ -177,6 +182,10 @@ ul.guitar-list > li > a > picture > img {
     .guitarchive {
         display: grid;
         grid-template-columns: minmax(21rem, 1fr) 1fr;
+    }
+
+    .guitarchive > .title-filter-wrap {
+        min-height: 100vh;
     }
 
     .guitarchive > .guitar-list {

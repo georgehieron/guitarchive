@@ -32,11 +32,11 @@ h1 {
     display: block;
     width: 100%;
     letter-spacing: clamp(0px, 1vw, 0.625rem);
-    font-size: clamp(1.9rem, 3.8vw, 3.4rem);
+    font-size: clamp(1.8rem, 3.6vw, 3.4rem);
     text-align: center;
     text-transform: uppercase;
-    border-top: 0.0625rem solid;
-    border-bottom: 0.0625rem solid;
+    background-color: var(--color-shade);
+    padding: 0 .1em;
 }
 
 body,

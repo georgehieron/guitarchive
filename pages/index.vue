@@ -1,7 +1,7 @@
 <template>
   <main class="guitarchive wrapper">
     <div class="title-filter-wrap">
-      <div class="padded">
+      <div class="title-wrap padded">
         <h1>{{ this.title }}</h1>
       </div>
       <form class="guitar-filter">
