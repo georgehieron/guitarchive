@@ -92,16 +92,23 @@
         </table>
       </div>
     </div>
-    <!-- <div
-      class="guitar-img"
-      :style="{ backgroundImage: `url(${this.img})` }"
-    ></div> -->
-    <div
-      class="guitar-img"
-      :style="{
-        backgroundImage: `url(https://www.levytukku.fi/images/products/rg550-dy-00-03_orig.png)`,
-      }"
-    ></div>
+    <div class="guitar-imgs">
+        <picture>
+            <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_RG550_DY_00_04.png" alt="">
+        </picture>
+        <picture>
+            <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_RG550_DY_00_04_sub_1.jpg" alt="">
+        </picture>
+        <picture>
+            <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_RG550_DY_00_04_sub_2.jpg" alt="">
+        </picture>
+        <picture>
+            <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_RG550_DY_00_04_sub_3.jpg" alt="">
+        </picture>
+        <picture>
+            <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_RG550_DY_00_04_sub_4.jpg" alt="">
+        </picture>
+    </div>
   </div>
 </template>
 
