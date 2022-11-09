@@ -67,7 +67,7 @@ form.guitar-filter,
 ul.guitar-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: max(3vw, 1.5rem);
+    grid-column-gap: var(--space);
 }
 
 form.guitar-filter {
@@ -81,7 +81,7 @@ ul.guitar-list {
     grid-row-gap: var(--space);
     height: max-content;
     align-items: stretch;
-    margin: max(3vw, 1.5rem) auto;
+    margin: var(--space) auto;
     padding: calc(var(--space) / 2) var(--space);
 }
 

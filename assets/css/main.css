@@ -4,7 +4,7 @@
     --color-primary: #ffff47;
     --color-shade: #1d1d1d;
     --color-accent: #5f8cf0;
-    --space: max(3vw, 2rem);
+    --space: min(5vw, 3rem);
     --border-radius: 0;
     --box-shadow: 0 0 0 0.125rem;
     --transition: 0.25s ease;
